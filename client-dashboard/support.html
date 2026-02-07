@@ -84,6 +84,16 @@
                         class="flex items-center gap-3 px-4 py-3 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg transition">
                         <i class="fas fa-life-ring w-5"></i> Support
                     </a>
+
+                    <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mt-6 mb-2">Profile</p>
+                    <a href="profile.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-user-circle w-5"></i> My Profile
+                    </a>
+                    <a href="settings.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-cog w-5"></i> Settings
+                    </a>
                 </nav>
             </div>
             <div class="p-4 border-t border-gray-200 dark:border-gray-700">
@@ -97,10 +107,13 @@
         <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
             <!-- Topbar -->
             <header
-                class="h-16 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 sm:px-6">
+                class="h-16 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 sm:px-6 z-10">
                 <div class="flex items-center gap-4">
-                    <button id="sidebar-toggle" class="md:hidden text-gray-500"><i class="fas fa-bars"></i></button>
-                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Support Tickets</h2>
+                    <button id="sidebar-toggle"
+                        class="md:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Client Portal</h2>
                 </div>
                 <div class="flex items-center gap-4">
                     <button id="rtl-toggle" title="Switch Direction"
@@ -116,17 +129,29 @@
                         class="p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 transition">
                         <i class="fas fa-power-off"></i>
                     </a>
+                    <div class="relative">
+                        <button class="flex items-center gap-2 focus:outline-none">
+                            <img src="https://ui-avatars.com/api/?name=Client+User&background=6366f1&color=fff"
+                                alt="User" class="w-8 h-8 rounded-full">
+                            <span class="hidden md:block font-medium text-sm text-gray-700 dark:text-gray-200">John
+                                Doe</span>
+                        </button>
+                    </div>
                 </div>
             </header>
 
             <main class="flex-1 overflow-auto p-4 sm:p-6 lg:p-8">
+                <div class="mb-8">
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Support Services</h1>
+                    <p class="text-gray-600 dark:text-gray-400">Need help? Open a ticket or browse your history.</p>
+                </div>
                 <div class="flex flex-col md:flex-row gap-6">
                     <!-- Open New Ticket Form -->
                     <div class="md:w-1/3">
                         <div
                             class="bg-white dark:bg-dark-card p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm sticky top-6">
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Open New Ticket</h3>
-                            <form action="#" class="space-y-4">
+                            <form id="ticket-form" action="#" class="space-y-4">
                                 <div>
                                     <label
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
@@ -191,7 +216,8 @@
                                         when trying to fetch data from the analytics endpoint...</p>
                                     <div class="flex items-center justify-between text-xs text-gray-500">
                                         <span>Last updated: Oct 20, 2025</span>
-                                        <a href="#" class="text-indigo-600 hover:underline">View Conversation</a>
+                                        <a href="#" class="view-conv-btn text-indigo-600 hover:underline"
+                                            data-ticket="#2024" data-title="API Integration Issue">View Conversation</a>
                                     </div>
                                 </div>
 
@@ -208,7 +234,8 @@
                                         email marketing add-on this month...</p>
                                     <div class="flex items-center justify-between text-xs text-gray-500">
                                         <span>Last updated: Sep 05, 2025</span>
-                                        <a href="#" class="text-indigo-600 hover:underline">View Conversation</a>
+                                        <a href="#" class="view-conv-btn text-indigo-600 hover:underline"
+                                            data-ticket="#1982" data-title="Billing Question">View Conversation</a>
                                     </div>
                                 </div>
                             </div>
@@ -218,6 +245,76 @@
             </main>
         </div>
     </div>
+    <!-- Conversation Modal -->
+    <div id="conversation-modal" class="fixed inset-0 z-50 hidden overflow-hidden">
+        <div class="absolute inset-0 bg-gray-900/75 transition-opacity" aria-hidden="true"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex">
+            <div class="relative w-screen max-w-lg">
+                <div
+                    class="h-full flex flex-col bg-white dark:bg-dark-card shadow-xl overflow-y-auto border-l border-gray-200 dark:border-gray-700">
+                    <!-- Header -->
+                    <div
+                        class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between bg-gray-50 dark:bg-gray-800">
+                        <div>
+                            <h3 id="conv-ticket-title" class="text-lg font-bold text-gray-900 dark:text-white">Ticket
+                                Conversation</h3>
+                            <p id="conv-ticket-id" class="text-xs text-gray-500">Ticket #2024</p>
+                        </div>
+                        <button class="close-conv-modal text-gray-400 hover:text-gray-600 transition p-2">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+
+                    <!-- Chat History -->
+                    <div id="conv-messages" class="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50 dark:bg-dark-bg/50">
+                        <!-- User Message -->
+                        <div class="flex flex-col items-end gap-2">
+                            <div
+                                class="bg-indigo-600 text-white p-4 rounded-2xl rounded-tr-none max-w-[85%] text-sm shadow-sm">
+                                <p>I'm getting a CORS error when trying to fetch data from the analytics endpoint. Is
+                                    there a whitelist I need to be on?</p>
+                            </div>
+                            <span class="text-[10px] text-gray-400">You • 10:30 AM</span>
+                        </div>
+
+                        <!-- Support Message -->
+                        <div class="flex flex-col items-start gap-2">
+                            <div class="flex items-center gap-2 mb-1">
+                                <div
+                                    class="w-6 h-6 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center text-[10px] font-bold text-indigo-600">
+                                    S</div>
+                                <span class="text-xs font-semibold text-gray-900 dark:text-white">Support Team</span>
+                            </div>
+                            <div
+                                class="bg-white dark:bg-dark-card border border-gray-200 dark:border-gray-700 p-4 rounded-2xl rounded-tl-none max-w-[85%] text-sm shadow-sm">
+                                <p>Hello John! Yes, you need to add your origin domain in the Security settings of your
+                                    dashboard. Please check the "Authorized Domains" section.</p>
+                            </div>
+                            <span class="text-[10px] text-gray-400">Support • 11:15 AM</span>
+                        </div>
+                    </div>
+
+                    <!-- Reply Box -->
+                    <div class="p-6 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-card">
+                        <form id="conv-reply-form" class="space-y-3">
+                            <textarea rows="3"
+                                class="w-full px-4 py-2 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                placeholder="Write your reply..."></textarea>
+                            <div class="flex justify-between items-center">
+                                <button type="button" class="text-gray-400 hover:text-gray-600 transition">
+                                    <i class="fas fa-paperclip"></i>
+                                </button>
+                                <button type="submit"
+                                    class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-bold transition">Send
+                                    Reply</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/dashboard.js"></script>
 </body>

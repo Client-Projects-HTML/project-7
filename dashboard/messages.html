@@ -56,7 +56,7 @@
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
         <aside id="sidebar"
-            class="hidden md:flex flex-col w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-gray-700 z-20">
+            class="hidden md:flex flex-col w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-gray-700 transition-all duration-300 z-20">
             <div class="h-16 flex items-center justify-center border-b border-gray-200 dark:border-gray-700">
                 <a href="../index.html" class="flex items-center gap-2">
                     <div
@@ -84,6 +84,7 @@
                         class="flex items-center gap-3 px-4 py-3 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg transition">
                         <i class="fas fa-envelope w-5"></i> Messages
                     </a>
+
                 </nav>
             </div>
             <div class="p-4 border-t border-gray-200 dark:border-gray-700">
@@ -98,10 +99,12 @@
         <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
             <!-- Topbar -->
             <header
-                class="h-16 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 sm:px-6">
+                class="h-16 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 sm:px-6 z-10">
                 <div class="flex items-center gap-4">
-                    <button id="sidebar-toggle" class="md:hidden text-gray-500"><i class="fas fa-bars"></i></button>
-                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Messages</h2>
+                    <button id="sidebar-toggle"
+                        class="md:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
                 </div>
                 <div class="flex items-center gap-4">
                     <button id="rtl-toggle" title="Switch Direction"
@@ -117,104 +120,126 @@
                         class="p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 transition">
                         <i class="fas fa-power-off"></i>
                     </a>
+                    <div class="relative">
+                        <button class="flex items-center gap-2 focus:outline-none">
+                            <img src="https://ui-avatars.com/api/?name=Admin+User&background=0ea5e9&color=fff"
+                                alt="User" class="w-8 h-8 rounded-full">
+                            <span
+                                class="hidden md:block font-medium text-sm text-gray-700 dark:text-gray-200">Admin</span>
+                        </button>
+                    </div>
                 </div>
             </header>
 
-            <main class="flex-1 flex h-full overflow-hidden p-4 gap-4">
-                <!-- Chat List -->
-                <div
-                    class="w-full md:w-80 bg-white dark:bg-dark-card rounded-xl border border-gray-200 dark:border-gray-700 flex flex-col">
-                    <div class="p-4 border-b border-gray-200 dark:border-gray-700">
-                        <input type="text" placeholder="Search messages..."
-                            class="w-full px-4 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 text-sm focus:outline-none">
-                    </div>
-                    <div class="flex-1 overflow-y-auto">
-                        <!-- Item 1 -->
-                        <div
-                            class="p-4 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer bg-blue-50 dark:bg-blue-900/10">
-                            <div class="flex justify-between items-start mb-1">
-                                <h4 class="font-semibold text-gray-900 dark:text-white">John Doe</h4>
-                                <span class="text-xs text-gray-500">2m ago</span>
-                            </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 truncate">I'm having trouble with the API
-                                key generation.</p>
-                        </div>
-                        <!-- Item 2 -->
-                        <div
-                            class="p-4 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
-                            <div class="flex justify-between items-start mb-1">
-                                <h4 class="font-semibold text-gray-900 dark:text-white">Sarah Smith</h4>
-                                <span class="text-xs text-gray-500">1h ago</span>
-                            </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 truncate">Can I upgrade my plan
-                                mid-month?</p>
-                        </div>
-                        <!-- Item 3 -->
-                        <div class="p-4 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
-                            <div class="flex justify-between items-start mb-1">
-                                <h4 class="font-semibold text-gray-900 dark:text-white">Michael Jordan</h4>
-                                <span class="text-xs text-gray-500">1d ago</span>
-                            </div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 truncate">Thanks for the quick refund.
-                            </p>
-                        </div>
-                    </div>
+            <main class="flex-1 flex flex-col p-4 sm:p-6 lg:p-8 overflow-hidden">
+                <div class="mb-8">
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Messages</h1>
+                    <p class="text-gray-600 dark:text-gray-400">Manage your communication with users.</p>
                 </div>
-
-                <!-- Chat Area -->
-                <div
-                    class="hidden md:flex flex-1 bg-white dark:bg-dark-card rounded-xl border border-gray-200 dark:border-gray-700 flex-col">
-                    <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
-                                JD</div>
-                            <div>
-                                <h3 class="font-bold text-gray-900 dark:text-white">John Doe</h3>
-                                <span class="text-xs text-green-500 flex items-center gap-1"><span
-                                        class="w-2 h-2 bg-green-500 rounded-full"></span> Online</span>
-                            </div>
+                <div class="flex-1 flex overflow-hidden gap-4">
+                    <!-- Chat List -->
+                    <div id="chat-list-container"
+                        class="w-full md:w-80 bg-white dark:bg-dark-card rounded-xl border border-gray-200 dark:border-gray-700 flex flex-col">
+                        <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                            <input type="text" placeholder="Search messages..."
+                                class="w-full px-4 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 text-sm focus:outline-none">
                         </div>
-                        <button class="text-gray-400 hover:text-gray-600"><i class="fas fa-ellipsis-v"></i></button>
-                    </div>
-
-                    <div class="flex-1 overflow-y-auto p-4 space-y-4">
-                        <!-- Message Left -->
-                        <div class="flex items-start gap-3">
-                            <div
-                                class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xs">
-                                JD</div>
-                            <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg rounded-tl-none max-w-md">
-                                <p class="text-sm text-gray-800 dark:text-gray-200">Hi, I'm trying to generate a new API
-                                    key but getting a 403 error.</p>
-                                <span class="text-xs text-gray-400 mt-1 block">10:30 AM</span>
+                        <div class="flex-1 overflow-y-auto">
+                            <!-- Item 1 -->
+                            <div data-chat="john"
+                                class="chat-item p-4 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer bg-blue-50 dark:bg-blue-900/10">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="font-semibold text-gray-900 dark:text-white">John Doe</h4>
+                                    <span class="text-xs text-gray-500">2m ago</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 truncate">I'm having trouble with the
+                                    API
+                                    key generation.</p>
                             </div>
-                        </div>
-
-                        <!-- Message Right -->
-                        <div class="flex items-start gap-3 justify-end">
-                            <div class="bg-blue-600 p-3 rounded-lg rounded-tr-none max-w-md text-white">
-                                <p class="text-sm">Hello John! Let me check your account permissions. One moment please.
+                            <!-- Item 2 -->
+                            <div data-chat="sarah"
+                                class="chat-item p-4 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="font-semibold text-gray-900 dark:text-white">Sarah Smith</h4>
+                                    <span class="text-xs text-gray-500">1h ago</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 truncate">Can I upgrade my plan
+                                    mid-month?</p>
+                            </div>
+                            <!-- Item 3 -->
+                            <div data-chat="michael"
+                                class="chat-item p-4 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="font-semibold text-gray-900 dark:text-white">Michael Jordan</h4>
+                                    <span class="text-xs text-gray-500">1d ago</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 truncate">Thanks for the quick
+                                    refund.
                                 </p>
-                                <span class="text-xs text-blue-200 mt-1 block">10:32 AM</span>
                             </div>
-                            <div
-                                class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-xs">
-                                Me</div>
                         </div>
                     </div>
 
-                    <div class="p-4 border-t border-gray-200 dark:border-gray-700">
-                        <div class="flex gap-2">
-                            <button class="p-2 text-gray-400 hover:text-blue-600"><i
-                                    class="fas fa-paperclip"></i></button>
-                            <input type="text" placeholder="Type a message..."
-                                class="flex-1 px-4 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 focus:outline-none focus:border-blue-500">
-                            <button class="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"><i
-                                    class="fas fa-paper-plane"></i></button>
+                    <!-- Chat Area -->
+                    <div id="chat-area-container"
+                        class="hidden md:flex flex-1 bg-white dark:bg-dark-card rounded-xl border border-gray-200 dark:border-gray-700 flex-col">
+                        <div
+                            class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <button id="back-to-list" class="md:hidden text-gray-500 hover:text-blue-600 mr-1"><i
+                                        class="fas fa-arrow-left"></i></button>
+                                <div id="active-chat-avatar"
+                                    class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+                                    JD</div>
+                                <div>
+                                    <h3 id="active-chat-name" class="font-bold text-gray-900 dark:text-white">John Doe
+                                    </h3>
+                                    <span class="text-xs text-green-500 flex items-center gap-1"><span
+                                            class="w-2 h-2 bg-green-500 rounded-full"></span> Online</span>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600"><i class="fas fa-ellipsis-v"></i></button>
+                        </div>
+
+                        <div id="chat-messages-scroll" class="flex-1 overflow-y-auto p-4 space-y-4">
+                            <!-- Message Left -->
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xs">
+                                    JD</div>
+                                <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg rounded-tl-none max-w-md">
+                                    <p class="text-sm text-gray-800 dark:text-gray-200">Hi, I'm trying to generate a new
+                                        API
+                                        key but getting a 403 error.</p>
+                                    <span class="text-xs text-gray-400 mt-1 block">10:30 AM</span>
+                                </div>
+                            </div>
+
+                            <!-- Message Right -->
+                            <div class="flex items-start gap-3 justify-end">
+                                <div class="bg-blue-600 p-3 rounded-lg rounded-tr-none max-w-md text-white">
+                                    <p class="text-sm">Hello John! Let me check your account permissions. One moment
+                                        please.
+                                    </p>
+                                    <span class="text-xs text-blue-200 mt-1 block">10:32 AM</span>
+                                </div>
+                                <div
+                                    class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-xs">
+                                    Me</div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                            <div class="flex gap-2">
+                                <button class="p-2 text-gray-400 hover:text-blue-600"><i
+                                        class="fas fa-paperclip"></i></button>
+                                <input type="text" placeholder="Type a message..."
+                                    class="flex-1 px-4 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 focus:outline-none focus:border-blue-500">
+                                <button class="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"><i
+                                        class="fas fa-paper-plane"></i></button>
+                            </div>
                         </div>
                     </div>
-                </div>
             </main>
         </div>
     </div>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const savedDir = localStorage.getItem('dir');
+            const html = document.documentElement;
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+            if (savedDir) {
+                html.setAttribute('dir', savedDir);
+            }
+        })();
+    </script>
+    <title>Nexus Client - My Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        dark: {
+                            bg: '#020617',
+                            card: '#0f172a',
+                            text: '#f8fafc'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
+                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body
+    class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans antialiased">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside id="sidebar"
+            class="hidden md:flex flex-col w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-gray-700 transition-all duration-300 z-20">
+            <div class="h-16 flex items-center justify-center border-b border-gray-200 dark:border-gray-700">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                        N</div>
+                    <span class="font-bold text-2xl text-gray-900 dark:text-white">Nexus</span>
+                </a>
+            </div>
+            <div class="flex-1 overflow-y-auto py-4">
+                <nav class="px-4 space-y-2">
+                    <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">My Account</p>
+                    <a href="index.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-home w-5"></i> Overview
+                    </a>
+                    <a href="my-services.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-box w-5"></i> My Services
+                    </a>
+                    <a href="invoices.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-file-invoice-dollar w-5"></i> Invoices
+                    </a>
+                    <a href="support.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-life-ring w-5"></i> Support
+                    </a>
+
+                    <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mt-6 mb-2">Profile</p>
+                    <a href="profile.html"
+                        class="flex items-center gap-3 px-4 py-3 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg transition">
+                        <i class="fas fa-user-circle w-5"></i> My Profile
+                    </a>
+                    <a href="settings.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-cog w-5"></i> Settings
+                    </a>
+                </nav>
+            </div>
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                <a href="../login.html"
+                    class="flex items-center gap-3 px-4 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition">
+                    <i class="fas fa-sign-out-alt w-5"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+            <!-- Topbar -->
+            <header
+                class="h-16 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 sm:px-6 z-10">
+                <div class="flex items-center gap-4">
+                    <button id="sidebar-toggle"
+                        class="md:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Client Portal</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="rtl-toggle" title="Switch Direction"
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-language text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <a href="../login.html" title="Logout"
+                        class="p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 transition">
+                        <i class="fas fa-power-off"></i>
+                    </a>
+                    <div class="relative">
+                        <button class="flex items-center gap-2 focus:outline-none">
+                            <img id="topbar-avatar"
+                                src="https://ui-avatars.com/api/?name=John+Doe&background=6366f1&color=fff" alt="User"
+                                class="w-8 h-8 rounded-full">
+                            <span id="topbar-name"
+                                class="hidden md:block font-medium text-sm text-gray-700 dark:text-gray-200">John
+                                Doe</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-auto p-4 sm:p-6 lg:p-8">
+                <div class="mb-8">
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Profile Settings</h1>
+                    <p class="text-gray-600 dark:text-gray-400">Update your personal information and profile picture.
+                    </p>
+                </div>
+
+                <div class="max-w-4xl space-y-6">
+                    <!-- Profile Header/Picture -->
+                    <div
+                        class="bg-white dark:bg-dark-card rounded-xl border border-gray-200 dark:border-gray-700 p-6 shadow-sm">
+                        <div class="flex flex-col sm:flex-row items-center gap-6">
+                            <div class="relative group">
+                                <img id="profile-preview"
+                                    src="https://ui-avatars.com/api/?name=John+Doe&background=6366f1&color=fff"
+                                    alt="Profile"
+                                    class="w-24 h-24 rounded-full border-4 border-indigo-50 dark:border-indigo-900/30 object-cover">
+                                <label for="avatar-upload"
+                                    class="absolute inset-0 flex items-center justify-center bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition cursor-pointer">
+                                    <i class="fas fa-camera text-white text-xl"></i>
+                                </label>
+                                <input type="file" id="avatar-upload" class="hidden" accept="image/*">
+                            </div>
+                            <div class="text-center sm:text-left">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white" id="display-name">John Doe
+                                </h3>
+                                <p class="text-gray-500 text-sm mb-4">Client Representative since Oct 2023</p>
+                                <div class="flex gap-2 justify-center sm:justify-start">
+                                    <button
+                                        class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 transition">Change
+                                        Photo</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Form -->
+                    <div
+                        class="bg-white dark:bg-dark-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
+                        <div class="p-6 border-b border-gray-100 dark:border-gray-700">
+                            <h3 class="font-bold text-gray-900 dark:text-white">Personal Information</h3>
+                        </div>
+                        <form id="profile-form" class="p-6 space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-500 mb-1">Full Name</label>
+                                    <input type="text" id="full-name" value="John Doe"
+                                        class="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-500 mb-1">Email Address</label>
+                                    <input type="email" id="email" value="john.doe@example.com"
+                                        class="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-500 mb-1">Phone Number</label>
+                                    <input type="text" id="phone" value="+1 (555) 000-0000"
+                                        class="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-500 mb-1">Location</label>
+                                    <input type="text" id="location" value="New York, USA"
+                                        class="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-500 mb-1">Biography</label>
+                                <textarea id="bio" rows="4"
+                                    class="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">Passionate about tech solutions and efficient workflows. managing digital assets for my team.</textarea>
+                            </div>
+                            <div class="flex justify-end pt-4">
+                                <button type="submit"
+                                    class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700 transition">Save
+                                    Changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Security / Change Password -->
+                    <div
+                        class="bg-white dark:bg-dark-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
+                        <div class="p-6 border-b border-gray-100 dark:border-gray-700">
+                            <h3 class="font-bold text-gray-900 dark:text-white">Security</h3>
+                        </div>
+                        <form id="password-form" class="p-6 space-y-4">
+                            <div class="max-w-md space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-500 mb-1">Current Password</label>
+                                    <input type="password"
+                                        class="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-500 mb-1">New Password</label>
+                                    <input type="password"
+                                        class="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-500 mb-1">Confirm New
+                                        Password</label>
+                                    <input type="password"
+                                        class="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                            </div>
+                            <div class="flex justify-end pt-4">
+                                <button type="submit"
+                                    class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700 transition">Update
+                                    Password</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+
+</html>
