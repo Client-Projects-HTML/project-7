@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const savedDir = localStorage.getItem('dir');
+            const html = document.documentElement;
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+            if (savedDir) {
+                html.setAttribute('dir', savedDir);
+            }
+        })();
+    </script>
+    <title>Nexus Client - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        dark: {
+                            bg: '#020617',
+                            card: '#0f172a',
+                            text: '#f8fafc'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
+                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body
+    class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans antialiased">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside id="sidebar"
+            class="hidden md:flex flex-col w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-gray-700 transition-all duration-300 z-20">
+            <div class="h-16 flex items-center justify-center border-b border-gray-200 dark:border-gray-700">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                        N</div>
+                    <span class="font-bold text-2xl text-gray-900 dark:text-white">Nexus</span>
+                </a>
+            </div>
+            <div class="flex-1 overflow-y-auto py-4">
+                <nav class="px-4 space-y-2">
+                    <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">My Account</p>
+                    <a href="index.html"
+                        class="flex items-center gap-3 px-4 py-3 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg transition">
+                        <i class="fas fa-home w-5"></i> Overview
+                    </a>
+                    <a href="my-services.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-box w-5"></i> My Services
+                    </a>
+                    <a href="invoices.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-file-invoice-dollar w-5"></i> Invoices
+                    </a>
+                    <a href="support.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-life-ring w-5"></i> Support
+                    </a>
+
+                    <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mt-6 mb-2">Profile</p>
+                    <a href="#"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-user-circle w-5"></i> My Profile
+                    </a>
+                    <a href="#"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-cog w-5"></i> Settings
+                    </a>
+                </nav>
+            </div>
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                <a href="../login.html"
+                    class="flex items-center gap-3 px-4 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition">
+                    <i class="fas fa-sign-out-alt w-5"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+            <!-- Topbar -->
+            <header
+                class="h-16 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 sm:px-6 z-10">
+                <div class="flex items-center gap-4">
+                    <button id="sidebar-toggle"
+                        class="md:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Client Portal</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="rtl-toggle" title="Switch Direction"
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-language text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <a href="../login.html" title="Logout"
+                        class="p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 transition">
+                        <i class="fas fa-power-off"></i>
+                    </a>
+                    <div class="relative">
+                        <button class="flex items-center gap-2 focus:outline-none">
+                            <img src="https://ui-avatars.com/api/?name=Client+User&background=6366f1&color=fff"
+                                alt="User" class="w-8 h-8 rounded-full">
+                            <span class="hidden md:block font-medium text-sm text-gray-700 dark:text-gray-200">John
+                                Doe</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Scrollable Area -->
+            <main class="flex-1 overflow-auto p-4 sm:p-6 lg:p-8">
+                <div class="mb-8">
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Welcome back, John! 👋</h1>
+                    <p class="text-gray-600 dark:text-gray-400">Here's an overview of your active services and account
+                        status.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-indigo-600 p-6 rounded-xl shadow-lg shadow-indigo-500/20 text-white">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p class="text-indigo-100 text-sm font-medium">Active Services</p>
+                                <h3 class="text-3xl font-bold">3</h3>
+                            </div>
+                            <div class="p-2 bg-indigo-500 rounded-lg text-indigo-100">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                        </div>
+                        <a href="my-services.html" class="text-indigo-100 text-sm hover:text-white transition">View
+                            Services &rarr;</a>
+                    </div>
+
+                    <div
+                        class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Unpaid Invoices</p>
+                                <h3 class="text-3xl font-bold text-gray-900 dark:text-white">1</h3>
+                            </div>
+                            <div class="p-2 bg-red-100 dark:bg-red-900/30 rounded-lg text-red-600 dark:text-red-400">
+                                <i class="fas fa-file-invoice"></i>
+                            </div>
+                        </div>
+                        <a href="invoices.html" class="text-red-500 text-sm hover:text-red-700 transition">Pay Now
+                            &rarr;</a>
+                    </div>
+
+                    <div
+                        class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Open Tickets</p>
+                                <h3 class="text-3xl font-bold text-gray-900 dark:text-white">0</h3>
+                            </div>
+                            <div
+                                class="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg text-green-600 dark:text-green-400">
+                                <i class="fas fa-life-ring"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400">No pending issues.</p>
+                    </div>
+                </div>
+
+                <!-- Active Services Section -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Active Subscriptions</h3>
+                        <a href="my-services.html"
+                            class="text-sm text-indigo-600 hover:text-indigo-700 font-medium">Manage All</a>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Service Card 1 -->
+                        <div
+                            class="bg-white dark:bg-dark-card p-6 rounded-xl border border-gray-200 dark:border-gray-700 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                                            <i class="fas fa-layer-group text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-900 dark:text-white">SaaS Starter Plan</h4>
+                                            <p class="text-sm text-gray-500">Next billing: Nov 24, 2025</p>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Active</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 mb-4">75% usage of monthly limits</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button
+                                    class="flex-1 px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition">Usage</button>
+                                <button
+                                    class="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700 transition">Upgrade</button>
+                            </div>
+                        </div>
+
+                        <!-- Service Card 2 -->
+                        <div
+                            class="bg-white dark:bg-dark-card p-6 rounded-xl border border-gray-200 dark:border-gray-700 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
+                                            <i class="fas fa-envelope text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-900 dark:text-white">Email Marketing Add-on
+                                            </h4>
+                                            <p class="text-sm text-gray-500">Next billing: Nov 24, 2025</p>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Active</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">5,000 / 10,000 emails sent this
+                                    month.</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button
+                                    class="flex-1 px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition">Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Invoices -->
+                <div
+                    class="bg-white dark:bg-dark-card rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Recent Invoices</h3>
+                        <a href="invoices.html" class="text-sm text-indigo-600 hover:text-indigo-700 font-medium">View
+                            All</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr
+                                    class="bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 text-xs uppercase">
+                                    <th class="px-6 py-4 font-semibold">Invoice ID</th>
+                                    <th class="px-6 py-4 font-semibold">Date</th>
+                                    <th class="px-6 py-4 font-semibold">Amount</th>
+                                    <th class="px-6 py-4 font-semibold">Status</th>
+                                    <th class="px-6 py-4 font-semibold text-right">Download</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">INV-2025-001
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Oct 24, 2025</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">$29.00</td>
+                                    <td class="px-6 py-4 text-sm"><span
+                                            class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right"><button
+                                            class="text-gray-400 hover:text-gray-600"><i
+                                                class="fas fa-download"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+
+</html>

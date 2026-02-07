@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const savedDir = localStorage.getItem('dir');
+            const html = document.documentElement;
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+            if (savedDir) {
+                html.setAttribute('dir', savedDir);
+            }
+        })();
+    </script>
+    <title>Login - Nexus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        dark: {
+                            bg: '#020617',
+                            card: '#0f172a',
+                            text: '#f8fafc'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
+                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body
+    class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans antialiased">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <!-- Background Decor -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div
+                class="absolute -top-[30%] -left-[10%] w-[70%] h-[70%] rounded-full bg-blue-400/20 blur-3xl opacity-50 mix-blend-multiply filter animate-blob">
+            </div>
+            <div
+                class="absolute -bottom-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-purple-400/20 blur-3xl opacity-50 mix-blend-multiply filter animate-blob animation-delay-2000">
+            </div>
+        </div>
+
+        <div class="absolute top-4 right-4 flex items-center gap-2 z-20">
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+            </button>
+            <button id="rtl-toggle" title="Switch Direction"
+                class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                <i class="fas fa-language text-gray-600 dark:text-gray-300"></i>
+            </button>
+        </div>
+
+        <div
+            class="max-w-md w-full space-y-8 bg-white dark:bg-dark-card p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 relative z-10">
+            <div class="text-center">
+                <a href="index.html" class="inline-flex items-center gap-2 mb-6">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                        N</div>
+                    <span class="font-display font-bold text-3xl text-gray-900 dark:text-white">Nexus</span>
+                </a>
+                <h2 class="mt-2 text-3xl font-display font-bold text-gray-900 dark:text-white">Welcome back</h2>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    Please enter your details to sign in.
+                </p>
+            </div>
+
+            <form class="mt-8 space-y-6" action="dashboard/index.html">
+                <div class="space-y-4">
+                    <div>
+                        <label for="email-address"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email
+                            address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-gray-400"></i>
+                            </div>
+                            <input id="email-address" name="email" type="email" autocomplete="email" required
+                                class="pl-10 block w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm transition duration-200"
+                                placeholder="you@example.com">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <label for="password"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+                            <div class="text-sm">
+                                <a href="#" class="font-medium text-blue-600 hover:text-blue-500">Forgot your
+                                    password?</a>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input id="password" name="password" type="password" autocomplete="current-password"
+                                required
+                                class="pl-10 block w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm transition duration-200"
+                                placeholder="••••••••">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <input id="remember-me" name="remember-me" type="checkbox"
+                        class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                    <label for="remember-me" class="ml-2 block text-sm text-gray-900 dark:text-gray-300">Remember
+                        me</label>
+                </div>
+
+                <div>
+                    <button type="submit"
+                        class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 shadow-lg shadow-blue-500/30">
+                        Sign in
+                    </button>
+                </div>
+            </form>
+
+            <div class="relative">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-2 bg-white dark:bg-dark-card text-gray-500">Quick Access Demo</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <a href="dashboard/index.html"
+                    class="w-full inline-flex justify-center py-2.5 px-4 border border-blue-600 dark:border-blue-500 rounded-lg shadow-sm bg-blue-50 dark:bg-blue-900/20 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition">
+                    Admin Dashboard
+                </a>
+                <a href="client-dashboard/index.html"
+                    class="w-full inline-flex justify-center py-2.5 px-4 border border-indigo-600 dark:border-indigo-500 rounded-lg shadow-sm bg-indigo-50 dark:bg-indigo-900/20 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition">
+                    Client Dashboard
+                </a>
+            </div>
+
+            <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+                Don't have an account?
+                <a href="signup.html" class="font-medium text-blue-600 hover:text-blue-500 transition">Sign up for
+                    free</a>
+            </p>
+        </div>
+    </div>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

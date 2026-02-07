@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const savedDir = localStorage.getItem('dir');
+            const html = document.documentElement;
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+            if (savedDir) {
+                html.setAttribute('dir', savedDir);
+            }
+        })();
+    </script>
+    <title>Web Development - Nexus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        dark: {
+                            bg: '#020617',
+                            card: '#0f172a',
+                            text: '#f8fafc'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
+                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
+
+    <header class="fixed w-full top-0 z-50 glass transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                        N</div>
+                    <span
+                        class="font-display font-bold text-3xl tracking-tight text-gray-900 dark:text-white">Nexus</span>
+                </a>
+                <nav class="hidden md:flex gap-8">
+                    <a href="index.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Home</a>
+                    <a href="about.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">About</a>
+                    <a href="services.html" class="text-blue-600 font-medium">Services</a>
+                    <a href="blog.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Blog</a>
+                    <a href="contact.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Contact</a>
+                </nav>
+                <div class="hidden md:flex items-center gap-4">
+                    <button id="rtl-toggle" title="Switch Direction"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-language text-gray-600 dark:text-gray-300"></i>
+                    </button>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <a href="login.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium">Login</a>
+                </div>
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <button id="rtl-toggle-mobile" title="Switch Direction"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-language text-gray-600 dark:text-gray-300"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300"><i
+                            class="fas fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 hidden md:hidden">
+        <div
+            class="absolute right-0 top-0 h-full w-64 bg-white dark:bg-dark-card shadow-2xl p-6 transform transition-transform duration-300">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-display font-bold text-xl text-gray-900 dark:text-white">Menu</span>
+                <button id="close-menu-btn"
+                    class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"><i
+                        class="fas fa-times text-xl"></i></button>
+            </div>
+            <nav class="flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-600 dark:text-gray-300">Home</a>
+                <a href="about.html" class="text-gray-600 dark:text-gray-300">About</a>
+                <a href="services.html" class="text-blue-600 font-medium">Services</a>
+                <a href="blog.html" class="text-gray-600 dark:text-gray-300">Blog</a>
+                <a href="contact.html" class="text-gray-600 dark:text-gray-300">Contact</a>
+                <hr class="border-gray-200 dark:border-gray-700 my-4">
+                <a href="login.html" class="text-gray-600 dark:text-gray-300">Login</a>
+                <a href="signup.html" class="text-blue-600 font-medium">Get Started</a>
+            </nav>
+        </div>
+    </div>
+
+
+    <section id="service-header" class="pt-32 pb-20 bg-blue-600 dark:bg-blue-800 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pattern-dots"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 id="service-title" class="text-4xl md:text-5xl font-display font-bold text-white mb-6">Web Development
+            </h1>
+            <p id="service-desc" class="text-lg text-blue-100 max-w-2xl mx-auto">Building high-performance, fast, and
+                secure websites
+                tailored to your brand.</p>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white dark:bg-dark-card">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- Content -->
+                <div class="lg:col-span-2">
+                    <img id="service-image"
+                        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&h=500&q=80"
+                        alt="Web Development" class="rounded-2xl shadow-lg mb-8 w-full">
+
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Overview</h2>
+                    <p id="service-overview" class="text-gray-600 dark:text-gray-300 mb-6">
+                        In today's digital world, your website is often the first point of contact with potential
+                        customers. We specialize in creating custom web solutions that not only look great but also
+                        perform exceptionally well. From corporate websites to complex e-commerce platforms, we have the
+                        expertise to bring your vision to life.
+                    </p>
+
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What we offer</h3>
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-600">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">Custom Frontend</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">React, Vue, or plain HTML/CSS.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-600">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">Robust Backend</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Node.js, Python, or PHP.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-600">
+                                <i class="fas fa-mobile"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">Responsive Design</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Looks perfect on all devices.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-600">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">SEO Optimized</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Built for search engines.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Our Process</h3>
+                    <ol class="relative border-l border-gray-200 dark:border-gray-700 ml-3">
+                        <li class="mb-10 ml-6">
+                            <span
+                                class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-dark-card dark:bg-blue-900">
+                                <span class="text-blue-800 dark:text-blue-300 text-xs font-bold">1</span>
+                            </span>
+                            <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                                Discovery & Planning</h3>
+                            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">We start by
+                                understanding your goals, target audience, and requirements to create a roadmap.</p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span
+                                class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-dark-card dark:bg-blue-900">
+                                <span class="text-blue-800 dark:text-blue-300 text-xs font-bold">2</span>
+                            </span>
+                            <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Design & Prototyping
+                            </h3>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">We create wireframes and
+                                high-fidelity mockups for your approval before writing code.</p>
+                        </li>
+                        <li class="ml-6">
+                            <span
+                                class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-dark-card dark:bg-blue-900">
+                                <span class="text-blue-800 dark:text-blue-300 text-xs font-bold">3</span>
+                            </span>
+                            <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Development & Launch
+                            </h3>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">We build your site using
+                                best practices, test thoroughly, and deploy it to your server.</p>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="space-y-8">
+                    <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Need help?</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">Have a project in mind? Let's discuss how we
+                            can help you achieve your goals.</p>
+                        <a href="contact.html"
+                            class="block w-full py-3 text-center bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">Contact
+                            Us</a>
+                    </div>
+
+                    <div class="bg-white dark:bg-dark-card border border-gray-200 dark:border-gray-700 p-6 rounded-2xl">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Other Services</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#"
+                                    class="flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 transition"><i
+                                        class="fas fa-chevron-right text-xs mr-2"></i> Mobile Apps</a></li>
+                            <li><a href="#"
+                                    class="flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 transition"><i
+                                        class="fas fa-chevron-right text-xs mr-2"></i> UI/UX Design</a></li>
+                            <li><a href="#"
+                                    class="flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 transition"><i
+                                        class="fas fa-chevron-right text-xs mr-2"></i> Digital Marketing</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white dark:bg-dark-card pt-16 pb-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg border border-white/10">
+                            N</div>
+                        <span class="font-display font-bold text-2xl text-gray-900 dark:text-white">Nexus</span>
+                    </a>
+                    <p class="text-gray-500 dark:text-gray-400 mb-6">
+                        Making business management easy, efficient, and effective for everyone.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-linkedin text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Services</h4>
+                    <ul class="space-y-4">
+                        <li><a href="service-details.html?type=web-development"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Web
+                                Development</a>
+                        </li>
+                        <li><a href="service-details.html?type=mobile-apps"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Mobile
+                                Apps</a>
+                        </li>
+                        <li><a href="service-details.html?type=ui-ux-design"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">UI/UX
+                                Design</a>
+                        </li>
+                        <li><a href="service-details.html?type=seo-optimization"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">SEO
+                                Optimization</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Company</h4>
+                    <ul class="space-y-4">
+                        <li><a href="about.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">About
+                                Us</a></li>
+                        <li><a href="coming-soon.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Careers</a>
+                        </li>
+                        <li><a href="404.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Events</a>
+                        </li>
+                        <li><a href="blog.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Blog</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Subscribe</h4>
+                    <p class="text-gray-500 dark:text-gray-400 mb-4">
+                        Join our newsletter to stay up to date on features and releases.
+                    </p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Enter your email"
+                            class="px-4 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="button"
+                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition font-medium">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-200 dark:border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 dark:text-gray-400 text-sm">
+                    &copy; 2025 Nexus. All rights reserved. | Powered by <a href="https://www.abhivorn.com/"
+                        target="_blank" class="hover:text-blue-600 transition">Abhivorn Technologies Pvt.Ltd</a>
+                </p>
+                <div class="flex gap-6 text-sm text-gray-500 dark:text-gray-400">
+                    <a href="#" class="hover:text-gray-900 dark:hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-900 dark:hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        const serviceData = {
+            'web-development': {
+                title: 'Web Development',
+                desc: 'Building high-performance, fast, and secure websites tailored to your brand.',
+                overview: "In today's digital world, your website is often the first point of contact with potential customers. We specialize in creating custom web solutions that not only look great but also perform exceptionally well. From corporate websites to complex e-commerce platforms, we have the expertise to bring your vision to life.",
+                image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&h=500&q=80',
+                color: 'bg-blue-600'
+            },
+            'mobile-apps': {
+                title: 'Mobile Apps',
+                desc: 'Native and cross-platform mobile application development for iOS and Android devices.',
+                overview: 'We create high-quality mobile applications that provide a seamless user experience across all platforms. Whether you need a native iOS app, an Android app, or a cross-platform solution using React Native or Flutter, our team ensures your app is fast, reliable, and user-friendly.',
+                image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1000&h=500&q=80',
+                color: 'bg-purple-600'
+            },
+            'ui-ux-design': {
+                title: 'UI/UX Design',
+                desc: 'User-centered design focused on creating intuitive and engaging interfaces for web and mobile products.',
+                overview: 'Great design is more than just aesthetics; it is about how it works and feels. Our UI/UX design process focuses on understanding your users to create interfaces that are intuitive, accessible, and engaging. We provide full design services from wireframing to high-fidelity prototypes.',
+                image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1000&h=500&q=80',
+                color: 'bg-green-600'
+            },
+            'seo-optimization': {
+                title: 'SEO Optimization',
+                desc: "Improve your website's visibility and ranking on search engines to drive organic traffic.",
+                overview: 'Having a great website is only half the battle; people need to find it. Our SEO strategies are designed to improve your organic search rankings and drive targeted traffic to your site. We handle everything from keyword research and on-page optimization to technical SEO audits.',
+                image: 'https://images.unsplash.com/photo-1571721795195-a2ca2d3370a9?auto=format&fit=crop&w=1000&h=500&q=80',
+                color: 'bg-orange-600'
+            },
+            'digital-marketing': {
+                title: 'Digital Marketing',
+                desc: 'Comprehensive data-driven marketing strategies to increase your brand awareness and ROI.',
+                overview: 'We help you reach your audience through the most effective digital channels. Our marketing experts create tailored strategies for social media, paid advertising (PPC), and email campaigns to help grow your brand presence and maximize your return on investment.',
+                image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=1000&h=500&q=80',
+                color: 'bg-pink-600'
+            },
+            'cloud-solutions': {
+                title: 'Cloud Solutions',
+                desc: 'Secure and scalable cloud infrastructure setup, management, and migration services.',
+                overview: 'Modern businesses need flexible and scalable infrastructure. We provide end-to-end cloud solutions, from migrating your existing systems to the cloud (AWS, Azure, GCP) to setting up custom serverless architectures that grow with your needs while staying secure and cost-efficient.',
+                image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&h=500&q=80',
+                color: 'bg-indigo-600'
+            }
+        };
+
+        function updatePageContent() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const type = urlParams.get('type');
+
+            if (type && serviceData[type]) {
+                const data = serviceData[type];
+
+                // Update elements
+                const titleEl = document.getElementById('service-title');
+                const descEl = document.getElementById('service-desc');
+                const overviewEl = document.getElementById('service-overview');
+                const imageEl = document.getElementById('service-image');
+
+                if (titleEl) titleEl.textContent = data.title;
+                if (descEl) descEl.textContent = data.desc;
+                if (overviewEl) overviewEl.textContent = data.overview;
+                if (imageEl) {
+                    imageEl.src = data.image;
+                    imageEl.alt = data.title;
+                }
+
+                // Update header color
+                const header = document.getElementById('service-header');
+                if (header) {
+                    header.className = `pt-32 pb-20 ${data.color} dark:${data.color.replace('600', '800')} relative overflow-hidden`;
+                }
+
+                // Update page title
+                document.title = `${data.title} - Nexus`;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', updatePageContent);
+    </script>
+</body>
+
+</html>

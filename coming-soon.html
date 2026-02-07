@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const savedDir = localStorage.getItem('dir');
+            const html = document.documentElement;
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+            if (savedDir) {
+                html.setAttribute('dir', savedDir);
+            }
+        })();
+    </script>
+    <title>Coming Soon - Nexus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        dark: {
+                            bg: '#020617',
+                            card: '#0f172a',
+                            text: '#f8fafc'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
+                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body
+    class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans antialiased">
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center relative overflow-hidden">
+        <div class="absolute top-4 right-4 flex items-center gap-2 z-20">
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+            </button>
+            <button id="rtl-toggle" title="Switch Direction"
+                class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                <i class="fas fa-language text-gray-600 dark:text-gray-300"></i>
+            </button>
+        </div>
+        <!-- Background Decor -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div
+                class="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80')] bg-cover opacity-10">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-white dark:from-dark-bg to-transparent"></div>
+        </div>
+
+        <div class="max-w-2xl mx-auto relative z-10">
+            <div class="flex justify-center mb-8">
+                <div
+                    class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-bold text-4xl shadow-xl">
+                    S</div>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-display font-bold text-gray-900 dark:text-white mb-6">We are launching
+                soon</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-10">
+                We're building something amazing. Subscribe to our newsletter to get the latest updates and early
+                access.
+            </p>
+
+            <!-- Countdown -->
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-12">
+                <div
+                    class="bg-white dark:bg-dark-card p-4 rounded-xl shadow-lg w-24 border border-gray-100 dark:border-gray-700">
+                    <span class="block text-3xl font-bold text-blue-600">05</span>
+                    <span class="text-xs text-gray-500 uppercase">Days</span>
+                </div>
+                <div
+                    class="bg-white dark:bg-dark-card p-4 rounded-xl shadow-lg w-24 border border-gray-100 dark:border-gray-700">
+                    <span class="block text-3xl font-bold text-blue-600">12</span>
+                    <span class="text-xs text-gray-500 uppercase">Hours</span>
+                </div>
+                <div
+                    class="bg-white dark:bg-dark-card p-4 rounded-xl shadow-lg w-24 border border-gray-100 dark:border-gray-700">
+                    <span class="block text-3xl font-bold text-blue-600">45</span>
+                    <span class="text-xs text-gray-500 uppercase">Minutes</span>
+                </div>
+                <div
+                    class="bg-white dark:bg-dark-card p-4 rounded-xl shadow-lg w-24 border border-gray-100 dark:border-gray-700">
+                    <span class="block text-3xl font-bold text-blue-600">30</span>
+                    <span class="text-xs text-gray-500 uppercase">Seconds</span>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Enter your email address"
+                    class="flex-1 px-5 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
+                <button type="button"
+                    class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition shadow-lg shadow-blue-500/30">
+                    Notify Me
+                </button>
+            </form>
+
+            <div class="mt-8 text-sm text-gray-500">
+                <a href="index.html" class="hover:text-blue-600 transition">&larr; Back to Home</a>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

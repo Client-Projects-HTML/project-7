@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const savedDir = localStorage.getItem('dir');
+            const html = document.documentElement;
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+            if (savedDir) {
+                html.setAttribute('dir', savedDir);
+            }
+        })();
+    </script>
+    <title>Blog - Nexus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        dark: {
+                            bg: '#020617',
+                            card: '#0f172a',
+                            text: '#f8fafc'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
+                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
+
+    <header class="fixed w-full top-0 z-50 glass transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                        N</div>
+                    <span
+                        class="font-display font-bold text-3xl tracking-tight text-gray-900 dark:text-white">Nexus</span>
+                </a>
+                <nav class="hidden md:flex gap-8">
+                    <a href="index.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Home</a>
+                    <a href="about.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">About</a>
+                    <a href="services.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Services</a>
+                    <a href="blog.html" class="text-blue-600 font-medium">Blog</a>
+                    <a href="contact.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Contact</a>
+                </nav>
+                <div class="hidden md:flex items-center gap-4">
+                    <button id="rtl-toggle" title="Switch Direction"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-language text-gray-600 dark:text-gray-300"></i>
+                    </button>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <a href="login.html"
+                        class="text-gray-600 font-medium hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Login</a>
+                </div>
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <button id="rtl-toggle-mobile" title="Switch Direction"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-language text-gray-600 dark:text-gray-300"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300"><i
+                            class="fas fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 hidden md:hidden">
+        <div
+            class="absolute right-0 top-0 h-full w-64 bg-white dark:bg-dark-card shadow-2xl p-6 transform transition-transform duration-300">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-display font-bold text-xl text-gray-900 dark:text-white">Menu</span>
+                <button id="close-menu-btn"
+                    class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"><i
+                        class="fas fa-times text-xl"></i></button>
+            </div>
+            <nav class="flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-600 dark:text-gray-300">Home</a>
+                <a href="about.html" class="text-gray-600 dark:text-gray-300">About</a>
+                <a href="services.html" class="text-gray-600 dark:text-gray-300">Services</a>
+                <a href="blog.html" class="text-blue-600 font-medium">Blog</a>
+                <a href="contact.html" class="text-gray-600 dark:text-gray-300">Contact</a>
+                <hr class="border-gray-200 dark:border-gray-700 my-4">
+                <a href="login.html" class="text-gray-600 dark:text-gray-300">Login</a>
+            </nav>
+        </div>
+    </div>
+
+
+
+    <section class="py-20 mt-10 bg-white dark:bg-dark-card">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- Blog Grid -->
+                <div class="lg:col-span-2 grid md:grid-cols-2 gap-8">
+                    <!-- Post 1 -->
+                    <article
+                        class="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden hover:shadow-xl transition duration-300 flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
+                            alt="Future of AI" class="w-full h-48 object-cover">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <span class="text-sm font-semibold text-blue-600 mb-2 block">Technology</span>
+                            <h2
+                                class="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 transition">
+                                <a href="#">The Future of AI in SaaS</a>
+                            </h2>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-1">Discover how Artificial
+                                Intelligence is reshaping the landscape of software as a service...</p>
+                            <div class="flex items-center text-sm text-gray-500 mt-auto">
+                                <span>Oct 24, 2025</span>
+                                <span class="mx-2">•</span>
+                                <span>5 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 2 -->
+                    <article
+                        class="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden hover:shadow-xl transition duration-300 flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80"
+                            alt="UI Trends" class="w-full h-48 object-cover">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <span class="text-sm font-semibold text-purple-600 mb-2 block">Design</span>
+                            <h2
+                                class="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 transition">
+                                <a href="#">UI Trends for 2026</a>
+                            </h2>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-1">A deep dive into the
+                                upcoming visual styles and interaction patterns for digital products...</p>
+                            <div class="flex items-center text-sm text-gray-500 mt-auto">
+                                <span>Oct 20, 2025</span>
+                                <span class="mx-2">•</span>
+                                <span>8 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 3 -->
+                    <article
+                        class="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden hover:shadow-xl transition duration-300 flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80"
+                            alt="React Performance" class="w-full h-48 object-cover">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <span class="text-sm font-semibold text-green-600 mb-2 block">Development</span>
+                            <h2
+                                class="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 transition">
+                                <a href="#">Optimizing React Performance</a>
+                            </h2>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-1">Practical tips and
+                                techniques to speed up your React applications and improve UX...</p>
+                            <div class="flex items-center text-sm text-gray-500 mt-auto">
+                                <span>Oct 18, 2025</span>
+                                <span class="mx-2">•</span>
+                                <span>12 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 4 -->
+                    <article
+                        class="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden hover:shadow-xl transition duration-300 flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80"
+                            alt="Scaling Your Startup" class="w-full h-48 object-cover">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <span class="text-sm font-semibold text-orange-600 mb-2 block">Business</span>
+                            <h2
+                                class="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 transition">
+                                <a href="#">Scaling Your Startup</a>
+                            </h2>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-1">Lessons learned from growing
+                                a bootstrapped startup to a multi-million dollar company...</p>
+                            <div class="flex items-center text-sm text-gray-500 mt-auto">
+                                <span>Oct 15, 2025</span>
+                                <span class="mx-2">•</span>
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="space-y-8">
+                    <!-- Search -->
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl">
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-4">Search</h3>
+                        <div class="relative">
+                            <input type="text" placeholder="Search articles..."
+                                class="w-full px-4 py-2 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-gray-200">
+                            <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl">
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-4">Categories</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#"
+                                    class="flex justify-between text-gray-600 dark:text-gray-400 hover:text-blue-600 transition"><span>Technology</span>
+                                    <span
+                                        class="bg-gray-200 dark:bg-gray-700 px-2 rounded-full text-xs flex items-center">12</span></a>
+                            </li>
+                            <li><a href="#"
+                                    class="flex justify-between text-gray-600 dark:text-gray-400 hover:text-blue-600 transition"><span>Design</span>
+                                    <span
+                                        class="bg-gray-200 dark:bg-gray-700 px-2 rounded-full text-xs flex items-center">8</span></a>
+                            </li>
+                            <li><a href="#"
+                                    class="flex justify-between text-gray-600 dark:text-gray-400 hover:text-blue-600 transition"><span>Business</span>
+                                    <span
+                                        class="bg-gray-200 dark:bg-gray-700 px-2 rounded-full text-xs flex items-center">5</span></a>
+                            </li>
+                            <li><a href="#"
+                                    class="flex justify-between text-gray-600 dark:text-gray-400 hover:text-blue-600 transition"><span>Tutorials</span>
+                                    <span
+                                        class="bg-gray-200 dark:bg-gray-700 px-2 rounded-full text-xs flex items-center">15</span></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl">
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-4">Popular Tags</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="#"
+                                class="px-3 py-1 bg-white dark:bg-gray-700 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition">React</a>
+                            <a href="#"
+                                class="px-3 py-1 bg-white dark:bg-gray-700 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition">Tailwind</a>
+                            <a href="#"
+                                class="px-3 py-1 bg-white dark:bg-gray-700 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition">SaaS</a>
+                            <a href="#"
+                                class="px-3 py-1 bg-white dark:bg-gray-700 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition">Startup</a>
+                            <a href="#"
+                                class="px-3 py-1 bg-white dark:bg-gray-700 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition">Growth</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white dark:bg-dark-card pt-16 pb-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg border border-white/10">
+                            N</div>
+                        <span class="font-display font-bold text-2xl text-gray-900 dark:text-white">Nexus</span>
+                    </a>
+                    <p class="text-gray-500 dark:text-gray-400 mb-6">
+                        Making business management easy, efficient, and effective for everyone.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-linkedin text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Services</h4>
+                    <ul class="space-y-4">
+                        <li><a href="service-details.html?type=web-development"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Web
+                                Development</a>
+                        </li>
+                        <li><a href="service-details.html?type=mobile-apps"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Mobile
+                                Apps</a>
+                        </li>
+                        <li><a href="service-details.html?type=ui-ux-design"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">UI/UX
+                                Design</a>
+                        </li>
+                        <li><a href="service-details.html?type=seo-optimization"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">SEO
+                                Optimization</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Company</h4>
+                    <ul class="space-y-4">
+                        <li><a href="about.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">About
+                                Us</a></li>
+                        <li><a href="coming-soon.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Careers</a>
+                        </li>
+                        <li><a href="404.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Events</a>
+                        </li>
+                        <li><a href="blog.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Blog</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Subscribe</h4>
+                    <p class="text-gray-500 dark:text-gray-400 mb-4">
+                        Join our newsletter to stay up to date on features and releases.
+                    </p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Enter your email"
+                            class="px-4 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="button"
+                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition font-medium">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-200 dark:border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 dark:text-gray-400 text-sm">
+                    &copy; 2025 Nexus. All rights reserved. | Powered by <a href="https://www.abhivorn.com/"
+                        target="_blank" class="hover:text-blue-600 transition">Abhivorn Technologies Pvt.Ltd</a>
+                </p>
+                <div class="flex gap-6 text-sm text-gray-500 dark:text-gray-400">
+                    <a href="#" class="hover:text-gray-900 dark:hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-900 dark:hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

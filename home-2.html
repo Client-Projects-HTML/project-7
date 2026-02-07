@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus SaaS - Modern Software Template</title>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const savedDir = localStorage.getItem('dir');
+            const html = document.documentElement;
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+            if (savedDir) {
+                html.setAttribute('dir', savedDir);
+            }
+        })();
+    </script>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        dark: {
+                            bg: '#020617',
+                            card: '#0f172a',
+                            text: '#f8fafc'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
+                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-white text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
+
+    <!-- Header (Similar to Home 1 but tailored) -->
+    <header class="fixed w-full top-0 z-50 glass transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                            N</div>
+                        <span
+                            class="font-display font-bold text-3xl tracking-tight text-gray-900 dark:text-white">Nexus</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex gap-8">
+                    <a href="index.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Home</a>
+                    <a href="about.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">About</a>
+                    <a href="services.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Services</a>
+                    <a href="blog.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Blog</a>
+                    <a href="contact.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Contact</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="hidden md:flex items-center gap-4">
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <button id="rtl-toggle" title="Switch Direction"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-language text-gray-600 dark:text-gray-300"></i>
+                    </button>
+                    <a href="login.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium">Login</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <button id="rtl-toggle-mobile" title="Switch Direction"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-language text-gray-600 dark:text-gray-300"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 hidden md:hidden">
+        <div
+            class="absolute right-0 top-0 h-full w-64 bg-white dark:bg-dark-card shadow-2xl p-6 transform transition-transform duration-300">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-display font-bold text-xl text-gray-900 dark:text-white">Menu</span>
+                <button id="close-menu-btn"
+                    class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"><i
+                        class="fas fa-times text-xl"></i></button>
+            </div>
+            <nav class="flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-600 dark:text-gray-300">Home</a>
+                <a href="about.html" class="text-gray-600 dark:text-gray-300">About</a>
+                <a href="services.html" class="text-gray-600 dark:text-gray-300">Services</a>
+                <a href="blog.html" class="text-gray-600 dark:text-gray-300">Blog</a>
+                <a href="contact.html" class="text-gray-600 dark:text-gray-300">Contact</a>
+                <hr class="border-gray-200 dark:border-gray-700 my-4">
+                <a href="login.html" class="text-gray-600 dark:text-gray-300">Login</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- SaaS Hero -->
+    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 relative bg-gray-50 dark:bg-gray-900 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+            <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <span
+                    class="inline-block py-1 px-3 rounded-full border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 text-sm font-semibold mb-6">
+                    ✨ Version 2.0 is live
+                </span>
+                <h1
+                    class="text-5xl lg:text-7xl font-display font-bold text-gray-900 dark:text-white leading-tight mb-8">
+                    The modern standard for <br /> <span
+                        class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">digital
+                        products</span>
+                </h1>
+                <p class="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
+                    Nexus helps you build, ship, and scale your software faster with a complete suite of tools
+                    designed for modern developers.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                    <a href="#"
+                        class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-xl shadow-indigo-500/30 transition transform hover:-translate-y-1">
+                        Try Demo Live
+                    </a>
+                    <button
+                        class="px-8 py-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-white font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition flex items-center gap-2">
+                        <i class="fas fa-play text-indigo-500"></i> Watch Video
+                    </button>
+                </div>
+
+                <!-- Dashboard Preview -->
+                <div
+                    class="relative mx-auto rounded-xl bg-gray-900/5 dark:bg-white/5 p-4 ring-1 ring-inset ring-gray-900/10 dark:ring-white/10 lg:rounded-2xl lg:p-4">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&h=800&q=80"
+                        alt="App Dashboard"
+                        class="rounded-lg shadow-2xl ring-1 ring-gray-900/10 dark:ring-white/10 w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-24 bg-white dark:bg-dark-bg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white mb-4">Simple, transparent
+                    pricing</h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg">No hidden fees. Choose the plan that fits your
+                    business needs.</p>
+
+                <!-- Toggle -->
+                <div class="mt-8 flex justify-center items-center gap-3">
+                    <span class="text-gray-500 dark:text-gray-400 font-medium">Monthly</span>
+                    <button class="w-14 h-8 rounded-full bg-indigo-600 p-1 transition flex items-center justify-end">
+                        <div class="w-6 h-6 rounded-full bg-white shadow-md"></div>
+                    </button>
+                    <span class="text-gray-900 dark:text-white font-bold">Yearly <span
+                            class="text-green-500 text-sm font-normal">(-20%)</span></span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Starter -->
+                <div
+                    class="p-8 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition relative">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Starter</h3>
+                    <p class="text-gray-500 text-sm mb-6">Perfect for small teams and startups.</p>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-4xl font-bold text-gray-900 dark:text-white">$29</span>
+                        <span class="text-gray-500 ml-2">/month</span>
+                    </div>
+                    <a href="#"
+                        class="block w-full py-2.5 text-center rounded-lg border border-gray-200 dark:border-gray-700 text-indigo-600 dark:text-indigo-400 font-medium hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition">Get
+                        Started</a>
+                    <ul class="mt-8 space-y-4">
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300"><i
+                                class="fas fa-check text-green-500"></i> 5 Users</li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300"><i
+                                class="fas fa-check text-green-500"></i> Basic Analytics</li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300"><i
+                                class="fas fa-check text-green-500"></i> 48-hour Support</li>
+                    </ul>
+                </div>
+
+                <!-- Pro -->
+                <div
+                    class="p-8 rounded-2xl bg-gray-900 dark:bg-indigo-900/20 border border-gray-900 dark:border-indigo-500 text-white relative transform md:-translate-y-4 shadow-xl">
+                    <div
+                        class="absolute top-0 right-0 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase">
+                        Popular</div>
+                    <h3 class="text-xl font-bold mb-2">Business</h3>
+                    <p class="text-gray-400 text-sm mb-6">For growing companies maximizing speed.</p>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-4xl font-bold">$99</span>
+                        <span class="text-gray-400 ml-2">/month</span>
+                    </div>
+                    <a href="#"
+                        class="block w-full py-2.5 text-center rounded-lg bg-indigo-500 hover:bg-indigo-600 text-white font-medium transition">Get
+                        Started</a>
+                    <ul class="mt-8 space-y-4">
+                        <li class="flex items-center gap-3 text-gray-300"><i class="fas fa-check text-green-400"></i>
+                            Unlimited Users</li>
+                        <li class="flex items-center gap-3 text-gray-300"><i class="fas fa-check text-green-400"></i>
+                            Advanced Analytics</li>
+                        <li class="flex items-center gap-3 text-gray-300"><i class="fas fa-check text-green-400"></i>
+                            24/7 Priority Support</li>
+                        <li class="flex items-center gap-3 text-gray-300"><i class="fas fa-check text-green-400"></i>
+                            Custom Integrations</li>
+                    </ul>
+                </div>
+
+                <!-- Enterprise -->
+                <div
+                    class="p-8 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition relative">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Enterprise</h3>
+                    <p class="text-gray-500 text-sm mb-6">For large scale organizations.</p>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-4xl font-bold text-gray-900 dark:text-white">$299</span>
+                        <span class="text-gray-500 ml-2">/month</span>
+                    </div>
+                    <a href="#"
+                        class="block w-full py-2.5 text-center rounded-lg border border-gray-200 dark:border-gray-700 text-indigo-600 dark:text-indigo-400 font-medium hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition">Contact
+                        Sales</a>
+                    <ul class="mt-8 space-y-4">
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300"><i
+                                class="fas fa-check text-green-500"></i> Everything in Business</li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300"><i
+                                class="fas fa-check text-green-500"></i> Dedicated Manager</li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300"><i
+                                class="fas fa-check text-green-500"></i> SLA Guarantee</li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300"><i
+                                class="fas fa-check text-green-500"></i> SSO / SAML</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as Home 1) -->
+    <footer class="bg-white dark:bg-dark-card pt-16 pb-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg border border-white/10">
+                            N</div>
+                        <span class="font-display font-bold text-2xl text-gray-900 dark:text-white">Nexus</span>
+                    </a>
+                    <p class="text-gray-500 dark:text-gray-400 mb-6">
+                        Making business management easy, efficient, and effective for everyone.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-linkedin text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Services</h4>
+                    <ul class="space-y-4">
+                        <li><a href="service-details.html?type=web-development"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Web
+                                Development</a>
+                        </li>
+                        <li><a href="service-details.html?type=mobile-apps"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Mobile
+                                Apps</a>
+                        </li>
+                        <li><a href="service-details.html?type=ui-ux-design"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">UI/UX
+                                Design</a>
+                        </li>
+                        <li><a href="service-details.html?type=seo-optimization"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">SEO
+                                Optimization</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Company</h4>
+                    <ul class="space-y-4">
+                        <li><a href="about.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">About
+                                Us</a></li>
+                        <li><a href="coming-soon.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Careers</a>
+                        </li>
+                        <li><a href="404.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Events</a>
+                        </li>
+                        <li><a href="blog.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Blog</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Subscribe</h4>
+                    <p class="text-gray-500 dark:text-gray-400 mb-4">
+                        Join our newsletter to stay up to date on features and releases.
+                    </p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Enter your email"
+                            class="px-4 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="button"
+                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition font-medium">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-200 dark:border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 dark:text-gray-400 text-sm">
+                    &copy; 2025 Nexus. All rights reserved. | Powered by <a href="https://www.abhivorn.com/"
+                        target="_blank" class="hover:text-blue-600 transition">Abhivorn Technologies Pvt.Ltd</a>
+                </p>
+                <div class="flex gap-6 text-sm text-gray-500 dark:text-gray-400">
+                    <a href="#" class="hover:text-gray-900 dark:hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-900 dark:hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

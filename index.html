@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Ultimate Service & SaaS Template</title>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const savedDir = localStorage.getItem('dir');
+            const html = document.documentElement;
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+            if (savedDir) {
+                html.setAttribute('dir', savedDir);
+            }
+        })();
+    </script>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        dark: {
+                            bg: '#020617',
+                            card: '#0f172a',
+                            text: '#f8fafc'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
+                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 glass transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                            N</div>
+                        <span
+                            class="font-display font-bold text-3xl tracking-tight text-gray-900 dark:text-white">Nexus</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex gap-8">
+                    <a href="index.html" class="text-blue-600 font-medium">Home</a>
+                    <a href="about.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">About</a>
+                    <a href="services.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Services</a>
+                    <a href="blog.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Blog</a>
+                    <a href="contact.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Contact</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="hidden md:flex items-center gap-4">
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <button id="rtl-toggle" title="Switch Direction"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-language text-gray-600 dark:text-gray-300"></i>
+                    </button>
+                    <a href="login.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium">Login</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <button id="rtl-toggle-mobile" title="Switch Direction"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-language text-gray-600 dark:text-gray-300"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 hidden md:hidden">
+        <div
+            class="absolute right-0 top-0 h-full w-64 bg-white dark:bg-dark-card shadow-2xl p-6 transform transition-transform duration-300">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-display font-bold text-xl text-gray-900 dark:text-white">Menu</span>
+                <button id="close-menu-btn"
+                    class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-4">
+                <a href="index.html" class="text-blue-600 font-medium">Home</a>
+                <a href="about.html" class="text-gray-600 dark:text-gray-300">About</a>
+                <a href="services.html" class="text-gray-600 dark:text-gray-300">Services</a>
+                <a href="blog.html" class="text-gray-600 dark:text-gray-300">Blog</a>
+                <a href="contact.html" class="text-gray-600 dark:text-gray-300">Contact</a>
+                <hr class="border-gray-200 dark:border-gray-700 my-4">
+                <a href="login.html" class="text-gray-600 dark:text-gray-300">Login</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section
+        class="pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden relative bg-gradient-to-br from-blue-50/50 to-white dark:from-blue-900/10 dark:to-dark-bg">
+        <div class="absolute top-0 right-0 -z-10 opacity-20 dark:opacity-10 transform translate-x-1/3 -translate-y-1/3">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                class="w-[800px] h-[800px] text-blue-300 fill-current">
+                <path
+                    d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,79.6,-46.9C87.4,-34.7,90.1,-20.4,85.8,-8.3C81.5,3.8,70.2,13.7,61,23.1C51.8,32.5,44.7,41.4,35.6,48.6C26.5,55.8,15.4,61.3,3.3,63.2C-8.8,65.1,-21.9,63.4,-34.5,57.8C-47.1,52.2,-59.2,42.7,-67.2,30.8C-75.2,18.9,-79.1,4.6,-77.2,-9C-75.3,-22.6,-67.6,-35.5,-56.9,-44.7C-46.2,-53.9,-32.5,-59.4,-19.1,-64.1C-5.7,-68.8,7.4,-72.7,21.5,-75.1L30.5,-83.6Z"
+                    transform="translate(100 100)" />
+            </svg>
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left fade-in-up">
+                    <span
+                        class="inline-block py-1 px-3 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm font-semibold mb-6">
+                        🚀 Launch your business today
+                    </span>
+                    <h1
+                        class="text-4xl lg:text-6xl font-display font-bold text-gray-900 dark:text-white leading-tight mb-6">
+                        Grow your business with <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Nexus</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto lg:mx-0">
+                        A powerful, multipurpose HTML template designed for startups, agencies, and SaaS businesses.
+                        Built with modern tools for modern needs.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="signup.html"
+                            class="px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg shadow-blue-500/30 transition transform hover:-translate-y-1">
+                            Start Free Trial
+                        </a>
+                        <a href="#features"
+                            class="px-8 py-3.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-white font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+                            Learn More
+                        </a>
+                    </div>
+                    <div
+                        class="mt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500 dark:text-gray-400">
+                        <div class="flex items-center gap-1">
+                            <i class="fas fa-check text-green-500"></i> No credit card
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="fas fa-check text-green-500"></i> 14-day free trial
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="fas fa-check text-green-500"></i> Support 24/7
+                        </div>
+                    </div>
+                </div>
+                <!-- Hero Image/Mockup -->
+                <div class="relative lg:h-auto fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="relative z-10 rounded-2xl shadow-2xl overflow-hidden glass p-2">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+                            alt="Dashboard Preview" class="rounded-xl w-full h-auto">
+                    </div>
+                    <!-- Decorative elements -->
+                    <div
+                        class="absolute -bottom-10 -left-10 w-24 h-24 bg-yellow-400 rounded-full blur-2xl opacity-50 mix-blend-multiply filter animate-blob">
+                    </div>
+                    <div
+                        class="absolute -top-10 -right-10 w-24 h-24 bg-purple-400 rounded-full blur-2xl opacity-50 mix-blend-multiply filter animate-blob animation-delay-2000">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="py-12 border-y border-gray-100 dark:border-gray-800 bg-white dark:bg-dark-card/50">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-8">Trusted by 10,000+ businesses
+                worldwide</p>
+            <div
+                class="flex flex-wrap justify-center items-center gap-8 lg:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- Replace with SVG Logos -->
+                <h3 class="text-2xl font-bold text-gray-400">Google</h3>
+                <h3 class="text-2xl font-bold text-gray-400">Microsoft</h3>
+                <h3 class="text-2xl font-bold text-gray-400">Spotify</h3>
+                <h3 class="text-2xl font-bold text-gray-400">Amazon</h3>
+                <h3 class="text-2xl font-bold text-gray-400">Airbnb</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="py-20 bg-gray-50 dark:bg-dark-bg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-display font-bold text-gray-900 dark:text-white mb-4">Everything you need to
+                    scale</h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg">Powerful features to help you manage, track, and
+                    close more deals without the hassle.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div
+                    class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 dark:border-gray-700 group">
+                    <div class="mb-6 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+                            alt="Analytics"
+                            class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-chart-pie text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Analytics Dashboard</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Get detailed insights into your performance with
+                        real-time data visualization and reports.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div
+                    class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 dark:border-gray-700 group">
+                    <div class="mb-6 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
+                            alt="User Management"
+                            class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center text-purple-600 dark:text-purple-400 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-users text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">User Management</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Easily manage your team and customers with advanced
+                        roles and permissions settings.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div
+                    class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 dark:border-gray-700 group">
+                    <div class="mb-6 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"
+                            alt="Security"
+                            class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-green-600 dark:text-green-400 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-lock text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Secure Payments</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Accept payments globally with our secure, integrated
+                        payment processing system.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div
+                    class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 dark:border-gray-700 group">
+                    <div class="mb-6 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80"
+                            alt="Integration"
+                            class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center text-orange-600 dark:text-orange-400 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Fast Integration</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Connect with your favorite tools in seconds using our
+                        pre-built 1-click integrations.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div
+                    class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 dark:border-gray-700 group">
+                    <div class="mb-6 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80"
+                            alt="Live Support"
+                            class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 bg-pink-100 dark:bg-pink-900/30 rounded-xl flex items-center justify-center text-pink-600 dark:text-pink-400 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-comments text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Live Support</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Provide world-class support to your customers with our
+                        built-in live chat widget.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div
+                    class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 dark:border-gray-700 group">
+                    <div class="mb-6 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80"
+                            alt="Developer API"
+                            class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Developer API</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Build custom solutions on top of our platform with our
+                        robust and well-documented API.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-blue-600 dark:bg-blue-700 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pattern-dots"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-4xl font-display font-bold text-white mb-2">25k+</h4>
+                    <p class="text-blue-100">Happy Customers</p>
+                </div>
+                <div>
+                    <h4 class="text-4xl font-display font-bold text-white mb-2">99%</h4>
+                    <p class="text-blue-100">Uptime Guarantee</p>
+                </div>
+                <div>
+                    <h4 class="text-4xl font-display font-bold text-white mb-2">150+</h4>
+                    <p class="text-blue-100">Integrations</p>
+                </div>
+                <div>
+                    <h4 class="text-4xl font-display font-bold text-white mb-2">24/7</h4>
+                    <p class="text-blue-100">Expert Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-dark-card pt-16 pb-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg border border-white/10">
+                            N</div>
+                        <span class="font-display font-bold text-2xl text-gray-900 dark:text-white">Nexus</span>
+                    </a>
+                    <p class="text-gray-500 dark:text-gray-400 mb-6">
+                        Making business management easy, efficient, and effective for everyone.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                                class="fab fa-linkedin text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Services</h4>
+                    <ul class="space-y-4">
+                        <li><a href="service-details.html?type=web-development"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Web
+                                Development</a>
+                        </li>
+                        <li><a href="service-details.html?type=mobile-apps"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Mobile
+                                Apps</a>
+                        </li>
+                        <li><a href="service-details.html?type=ui-ux-design"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">UI/UX
+                                Design</a>
+                        </li>
+                        <li><a href="service-details.html?type=seo-optimization"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">SEO
+                                Optimization</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Company</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">About
+                                Us</a></li>
+                        <li><a href="coming-soon.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Careers</a>
+                        </li>
+                        <li><a href="404.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Events</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Blog</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-6">Subscribe</h4>
+                    <p class="text-gray-500 dark:text-gray-400 mb-4">
+                        Join our newsletter to stay up to date on features and releases.
+                    </p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Enter your email"
+                            class="px-4 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="button"
+                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition font-medium">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-200 dark:border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 dark:text-gray-400 text-sm">
+                    &copy; 2025 Nexus. All rights reserved. | Powered by <a href="https://www.abhivorn.com/"
+                        target="_blank" class="hover:text-blue-600 transition">Abhivorn Technologies Pvt.Ltd</a>
+                </p>
+                <div class="flex gap-6 text-sm text-gray-500 dark:text-gray-400">
+                    <a href="#" class="hover:text-gray-900 dark:hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-900 dark:hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

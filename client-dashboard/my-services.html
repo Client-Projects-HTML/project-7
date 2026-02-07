@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const savedDir = localStorage.getItem('dir');
+            const html = document.documentElement;
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            }
+            if (savedDir) {
+                html.setAttribute('dir', savedDir);
+            }
+        })();
+    </script>
+    <title>Nexus Client - My Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        dark: {
+                            bg: '#020617',
+                            card: '#0f172a',
+                            text: '#f8fafc'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
+                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body
+    class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans antialiased">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside id="sidebar"
+            class="hidden md:flex flex-col w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-gray-700 transition-all duration-300 z-20">
+            <div class="h-16 flex items-center justify-center border-b border-gray-200 dark:border-gray-700">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                        N</div>
+                    <span class="font-bold text-2xl text-gray-900 dark:text-white">Nexus</span>
+                </a>
+            </div>
+            <div class="flex-1 overflow-y-auto py-4">
+                <nav class="px-4 space-y-2">
+                    <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">My Account</p>
+                    <a href="index.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-home w-5"></i> Overview
+                    </a>
+                    <a href="my-services.html"
+                        class="flex items-center gap-3 px-4 py-3 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg transition">
+                        <i class="fas fa-box w-5"></i> My Services
+                    </a>
+                    <a href="invoices.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-file-invoice-dollar w-5"></i> Invoices
+                    </a>
+                    <a href="support.html"
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition">
+                        <i class="fas fa-life-ring w-5"></i> Support
+                    </a>
+                </nav>
+            </div>
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                <a href="../login.html"
+                    class="flex items-center gap-3 px-4 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition">
+                    <i class="fas fa-sign-out-alt w-5"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+            <!-- Topbar -->
+            <header
+                class="h-16 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 sm:px-6">
+                <div class="flex items-center gap-4">
+                    <button id="sidebar-toggle" class="md:hidden text-gray-500"><i class="fas fa-bars"></i></button>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">My Services</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="rtl-toggle" title="Switch Direction"
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-language text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <a href="../login.html" title="Logout"
+                        class="p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 transition">
+                        <i class="fas fa-power-off"></i>
+                    </a>
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-auto p-4 sm:p-6 lg:p-8">
+                <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <!-- Service 1 -->
+                    <div
+                        class="bg-white dark:bg-dark-card p-6 rounded-xl border border-gray-200 dark:border-gray-700 flex flex-col hover:border-indigo-300 dark:hover:border-indigo-700 transition shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <div
+                                class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                <i class="fas fa-rocket text-xl"></i>
+                            </div>
+                            <span
+                                class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Active</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">SaaS Starter Plan</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 flex-1">Standard subscription for small
+                            teams up to 5 users.</p>
+
+                        <div class="border-t border-gray-100 dark:border-gray-700 pt-4 mb-4">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-500">Price</span>
+                                <span class="font-bold text-gray-900 dark:text-white">$29.00/mo</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Next Billing</span>
+                                <span class="font-bold text-gray-900 dark:text-white">Nov 24, 2025</span>
+                            </div>
+                        </div>
+
+                        <button
+                            class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition font-medium">Manage</button>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div
+                        class="bg-white dark:bg-dark-card p-6 rounded-xl border border-gray-200 dark:border-gray-700 flex flex-col hover:border-indigo-300 dark:hover:border-indigo-700 transition shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <div
+                                class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center text-purple-600 dark:text-purple-400">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <span
+                                class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Active</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Email Marketing</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 flex-1">Add-on service for sending up to
+                            10k emails per month.</p>
+
+                        <div class="border-t border-gray-100 dark:border-gray-700 pt-4 mb-4">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-500">Price</span>
+                                <span class="font-bold text-gray-900 dark:text-white">$15.00/mo</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Next Billing</span>
+                                <span class="font-bold text-gray-900 dark:text-white">Nov 24, 2025</span>
+                            </div>
+                        </div>
+
+                        <button
+                            class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition font-medium">Manage</button>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div
+                        class="bg-white dark:bg-dark-card p-6 rounded-xl border border-gray-200 dark:border-gray-700 flex flex-col hover:border-indigo-300 dark:hover:border-indigo-700 transition shadow-sm opacity-75">
+                        <div class="flex justify-between items-start mb-4">
+                            <div
+                                class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                            <span
+                                class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-full text-xs font-semibold">Cancelled</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Security Audit</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 flex-1">One-time comprehensive security
+                            scan of your application.</p>
+
+                        <div class="border-t border-gray-100 dark:border-gray-700 pt-4 mb-4">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-500">Price</span>
+                                <span class="font-bold text-gray-900 dark:text-white">$99.00</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Ended</span>
+                                <span class="font-bold text-gray-900 dark:text-white">Sep 10, 2025</span>
+                            </div>
+                        </div>
+
+                        <button
+                            class="w-full py-2 bg-white dark:bg-dark-card border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-white rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition font-medium">View
+                            Details</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+
+</html>
