@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
     <script>
         (function () {
             const savedTheme = localStorage.getItem('theme');
@@ -56,7 +57,7 @@
 
 <body class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
 
-    <header class="fixed w-full top-0 z-50 glass transition-all duration-300">
+    <header class="fixed w-full top-0 z-50 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-800 transition-all duration-300">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="index.html" class="flex items-center gap-2">
@@ -67,8 +68,24 @@
                         class="font-display font-bold text-3xl tracking-tight text-gray-900 dark:text-white">Nexus</span>
                 </a>
                 <nav class="hidden md:flex gap-8">
-                    <a href="index.html"
-                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Home</a>
+                    <!-- Home Dropdown -->
+                    <div class="relative group" id="home-dropdown">
+                        <button
+                            class="flex items-center gap-1 text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium focus:outline-none"
+                            id="home-menu-btn">
+                            Home <i class="fas fa-chevron-up text-xs transition-transform duration-300"
+                                id="home-arrow"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-dark-card rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 py-2 hidden"
+                            id="home-menu">
+                            <a href="index.html"
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition">Home
+                                1</a>
+                            <a href="home-2.html"
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition">Home
+                                2</a>
+                        </div>
+                    </div>
                     <a href="about.html"
                         class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">About</a>
                     <a href="services.html"
@@ -88,7 +105,7 @@
                         <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
                     </button>
                     <a href="login.html"
-                        class="text-gray-600 font-medium hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Login</a>
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-center">Login</a>
                 </div>
                 <div class="md:hidden flex items-center gap-4">
                     <button id="theme-toggle-mobile"
@@ -118,24 +135,58 @@
                         class="fas fa-times text-xl"></i></button>
             </div>
             <nav class="flex flex-col space-y-4">
-                <a href="index.html" class="text-gray-600 dark:text-gray-300">Home</a>
+                <!-- Mobile Home Dropdown -->
+                <div>
+                    <button
+                        class="flex justify-between items-center w-full text-gray-600 dark:text-gray-300 font-medium focus:outline-none"
+                        id="mobile-home-menu-btn">
+                        Home <i class="fas fa-chevron-up text-xs transition-transform duration-300"
+                            id="mobile-home-arrow"></i>
+                    </button>
+                    <div class="mt-4 pl-4 space-y-4 hidden" id="mobile-home-menu">
+                        <a href="index.html"
+                            class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 transition pl-3">Home
+                            1</a>
+                        <a href="home-2.html"
+                            class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 transition pl-3">Home
+                            2</a>
+                    </div>
+                </div>
                 <a href="about.html" class="text-gray-600 dark:text-gray-300">About</a>
                 <a href="services.html" class="text-gray-600 dark:text-gray-300">Services</a>
                 <a href="blog.html" class="text-blue-600 font-medium">Blog</a>
                 <a href="contact.html" class="text-gray-600 dark:text-gray-300">Contact</a>
                 <hr class="border-gray-200 dark:border-gray-700 my-4">
-                <a href="login.html" class="text-gray-600 dark:text-gray-300">Login</a>
+                <a href="login.html"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md text-center block">Login</a>
             </nav>
         </div>
     </div>
 
 
 
-    <section class="py-20 mt-10 bg-white dark:bg-dark-card">
+    <section class="pt-32 pb-16 bg-white dark:bg-dark-card border-b border-gray-100 dark:border-gray-800">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6">Our Blog</h1>
+                <p class="text-gray-600 dark:text-gray-400 text-lg">Stay updated with the latest trends in technology,
+                    design, and business.</p>
+            </div>
+
+            <!-- Mobile Only Search Bar (After Navbar) -->
+            <div class="max-w-2xl mx-auto mb-12 md:hidden">
+                <div class="relative group">
+                    <input type="text" placeholder="Search articles..."
+                        class="blog-search-input w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white shadow-sm transition-all group-hover:shadow-md">
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                        <i class="fas fa-search text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
             <div class="grid lg:grid-cols-3 gap-12">
                 <!-- Blog Grid -->
-                <div class="lg:col-span-2 grid md:grid-cols-2 gap-8">
+                <div class="lg:col-span-2 grid md:grid-cols-2 gap-8" id="blog-posts-grid">
                     <!-- Post 1 -->
                     <article
                         class="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden hover:shadow-xl transition duration-300 flex flex-col">
@@ -220,15 +271,16 @@
 
                 <!-- Sidebar -->
                 <aside class="space-y-8">
-                    <!-- Search -->
-                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl">
+                    <!-- Desktop Search -->
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl hidden md:block">
                         <h3 class="font-bold text-gray-900 dark:text-white mb-4">Search</h3>
                         <div class="relative">
                             <input type="text" placeholder="Search articles..."
-                                class="w-full px-4 py-2 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-gray-200">
+                                class="blog-search-input w-full px-4 py-2 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 dark:text-gray-200">
                             <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
                         </div>
                     </div>
+
 
                     <!-- Categories -->
                     <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl">
@@ -280,9 +332,9 @@
 
     <footer class="bg-white dark:bg-dark-card pt-16 pb-8 border-t border-gray-200 dark:border-gray-700">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <!-- Brand -->
-                <div>
+                <div class="col-span-2 md:col-span-1 lg:col-span-1">
                     <a href="index.html" class="flex items-center gap-3 mb-6">
                         <div
                             class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg border border-white/10">
@@ -349,15 +401,15 @@
                 </div>
 
                 <!-- Newsletter -->
-                <div>
+                <div class="col-span-2 md:col-span-1 lg:col-span-1">
                     <h4 class="font-bold text-gray-900 dark:text-white mb-6">Subscribe</h4>
                     <p class="text-gray-500 dark:text-gray-400 mb-4">
                         Join our newsletter to stay up to date on features and releases.
                     </p>
                     <form class="flex flex-col gap-3">
-                        <input type="email" placeholder="Enter your email"
+                        <input type="email" placeholder="Enter your email" required
                             class="px-4 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <button type="button"
+                        <button type="submit"
                             class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition font-medium">Subscribe</button>
                     </form>
                 </div>
@@ -378,6 +430,65 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInputs = document.querySelectorAll('.blog-search-input');
+            const postsGrid = document.getElementById('blog-posts-grid');
+            const posts = postsGrid.querySelectorAll('article');
+
+            if (searchInputs.length > 0 && postsGrid) {
+                searchInputs.forEach(input => {
+                    input.addEventListener('input', (e) => {
+                        const searchTerm = e.target.value.toLowerCase().trim();
+
+                        // Sync all search inputs
+                        searchInputs.forEach(otherInput => {
+                            if (otherInput !== e.target) otherInput.value = e.target.value;
+                        });
+
+                        let foundAny = false;
+
+                        posts.forEach(post => {
+                            const title = post.querySelector('h2').textContent.toLowerCase();
+                            const description = post.querySelector('p').textContent.toLowerCase();
+                            const category = post.querySelector('span').textContent.toLowerCase();
+
+                            if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
+                                post.style.display = 'flex';
+                                foundAny = true;
+                            } else {
+                                post.style.display = 'none';
+                            }
+                        });
+
+                        // Handle "No results" message
+                        let noResultMsg = document.getElementById('no-results-msg');
+                        if (!foundAny) {
+                            if (!noResultMsg) {
+                                noResultMsg = document.createElement('div');
+                                noResultMsg.id = 'no-results-msg';
+                                noResultMsg.className = 'col-span-full py-10 text-center text-gray-500 dark:text-gray-400';
+                                noResultMsg.innerHTML = `
+                                    <i class="fas fa-search text-4xl mb-4 block opacity-20"></i>
+                                    <p class="text-xl font-medium">No articles found matching "${searchTerm}"</p>
+                                    <p class="text-sm">Try using different keywords</p>
+                                `;
+                                postsGrid.appendChild(noResultMsg);
+                            } else {
+                                noResultMsg.querySelector('p:nth-child(2)').textContent = `No articles found matching "${searchTerm}"`;
+                            }
+                        } else if (noResultMsg) {
+                            noResultMsg.remove();
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
+
+
+
+
