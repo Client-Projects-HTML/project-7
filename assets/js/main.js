@@ -82,6 +82,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // === Login Dropdown (Desktop) ===
+    const loginMenuBtn = document.getElementById('login-menu-btn');
+    const loginMenu = document.getElementById('login-menu');
+    const loginArrow = document.getElementById('login-arrow');
+
+    if (loginMenuBtn && loginMenu && loginArrow) {
+        loginMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = loginMenu.classList.toggle('hidden');
+            if (isHidden) {
+                loginArrow.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            } else {
+                loginArrow.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!loginMenuBtn.contains(e.target) && !loginMenu.contains(e.target)) {
+                loginMenu.classList.add('hidden');
+                loginArrow.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            }
+        });
+    }
+
     // === Home Dropdown (Mobile) ===
     const mobileHomeMenuBtn = document.getElementById('mobile-home-menu-btn');
     const mobileHomeMenu = document.getElementById('mobile-home-menu');
@@ -94,6 +118,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileHomeArrow.classList.replace('fa-chevron-down', 'fa-chevron-up');
             } else {
                 mobileHomeArrow.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+        });
+    }
+
+    // === Login Dropdown (Mobile) ===
+    const mobileLoginMenuBtn = document.getElementById('mobile-login-menu-btn');
+    const mobileLoginMenu = document.getElementById('mobile-login-menu');
+    const mobileLoginArrow = document.getElementById('mobile-login-arrow');
+
+    if (mobileLoginMenuBtn && mobileLoginMenu && mobileLoginArrow) {
+        mobileLoginMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileLoginMenu.classList.toggle('hidden');
+            if (isHidden) {
+                mobileLoginArrow.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            } else {
+                mobileLoginArrow.classList.replace('fa-chevron-up', 'fa-chevron-down');
             }
         });
     }
@@ -143,6 +183,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (pricingToggle) {
         let isYearly = false;
+        const yearlyDefaults = {
+            starter: '$19',
+            business: '$79',
+            enterprise: '$249'
+        };
+        const monthlyDefaults = {
+            starter: '$29',
+            business: '$99',
+            enterprise: '$299'
+        };
+
+        const setPriceText = (el, key) => {
+            if (!el) return;
+            const attr = isYearly ? 'yearly' : 'monthly';
+            const fallback = isYearly ? yearlyDefaults[key] : monthlyDefaults[key];
+            el.textContent = el.dataset[attr] || fallback;
+        };
 
         const updatePricing = () => {
             if (isYearly) {
@@ -155,17 +212,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (yearlyLabel) yearlyLabel.className = 'text-gray-500 dark:text-gray-400 font-medium cursor-pointer transition-colors';
             }
 
-            if (isYearly) {
-                if (starterPrice) starterPrice.textContent = '$19';
-                if (businessPrice) businessPrice.textContent = '$79';
-                if (enterprisePrice) enterprisePrice.textContent = '$249';
-                [starterPeriod, businessPeriod, enterprisePeriod].forEach(el => { if (el) el.textContent = '/year'; });
-            } else {
-                if (starterPrice) starterPrice.textContent = '$29';
-                if (businessPrice) businessPrice.textContent = '$99';
-                if (enterprisePrice) enterprisePrice.textContent = '$299';
-                [starterPeriod, businessPeriod, enterprisePeriod].forEach(el => { if (el) el.textContent = '/month'; });
-            }
+            setPriceText(starterPrice, 'starter');
+            setPriceText(businessPrice, 'business');
+            setPriceText(enterprisePrice, 'enterprise');
+            [starterPeriod, businessPeriod, enterprisePeriod].forEach(el => { if (el) el.textContent = isYearly ? '/year' : '/month'; });
         };
 
         pricingToggle.addEventListener('click', () => {

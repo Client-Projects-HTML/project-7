@@ -90,6 +90,8 @@
                         class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">About</a>
                     <a href="services.html"
                         class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Services</a>
+                    <a href="pricing.html"
+                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Pricing</a>
                     <a href="blog.html"
                         class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Blog</a>
 
@@ -105,8 +107,25 @@
                         <i class="fas fa-moon dark:hidden text-gray-600"></i>
                         <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
                     </button>
-                    <a href="login.html"
-                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-center">Login</a>
+                    <div class="relative">
+                        <div
+                            class="bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-center flex items-center overflow-hidden">
+                            <a href="login.html" class="px-4 py-2">Login</a>
+                            <button id="login-menu-btn"
+                                class="px-3 py-2 border-l border-white/30 hover:bg-blue-800/30 focus:outline-none"
+                                aria-label="Toggle login options">
+                                <i class="fas fa-chevron-up text-xs transition-transform duration-300"
+                                    id="login-arrow"></i>
+                            </button>
+                        </div>
+                        <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-dark-card rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 py-2 hidden"
+                            id="login-menu">
+                            <a href="client-dashboard/index.html"
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition">Client</a>
+                            <a href="dashboard/index.html"
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition">Admin</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="md:hidden flex items-center gap-4">
                     <button id="theme-toggle-mobile"
@@ -155,11 +174,28 @@
                 </div>
                 <a href="about.html" class="text-gray-600 dark:text-gray-300">About</a>
                 <a href="services.html" class="text-gray-600 dark:text-gray-300">Services</a>
+                <a href="pricing.html" class="text-gray-600 dark:text-gray-300">Pricing</a>
                 <a href="blog.html" class="text-gray-600 dark:text-gray-300">Blog</a>
                 <a href="contact.html" class="text-blue-600 font-medium">Contact</a>
                 <hr class="border-gray-200 dark:border-gray-700 my-4">
-                <a href="login.html"
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md text-center block">Login</a>
+                <div>
+                    <div
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all duration-300 shadow-md flex items-center overflow-hidden">
+                        <a href="login.html" class="px-4 py-3 block flex-1">Login</a>
+                        <button id="mobile-login-menu-btn"
+                            class="px-4 py-3 border-l border-white/30 hover:bg-blue-800/30 focus:outline-none"
+                            aria-label="Toggle mobile login options">
+                            <i class="fas fa-chevron-up text-xs transition-transform duration-300"
+                                id="mobile-login-arrow"></i>
+                        </button>
+                    </div>
+                    <div class="mt-3 pl-4 space-y-3 hidden" id="mobile-login-menu">
+                        <a href="client-dashboard/index.html"
+                            class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 transition pl-3">Client</a>
+                        <a href="dashboard/index.html"
+                            class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 transition pl-3">Admin</a>
+                    </div>
+                </div>
             </nav>
         </div>
     </div>
@@ -395,6 +431,13 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
 
 
 
