@@ -27,11 +27,11 @@
                 extend: {
                     colors: {
                         primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
+                            50: '#FFF1F2',
+                            100: '#FFE4E6',
+                            500: '#E11D48',
+                            600: '#BE123C',
+                            700: '#9F1239',
                         },
                         dark: {
                             bg: '#020617',
@@ -40,8 +40,8 @@
                         }
                     },
                     backgroundImage: {
-                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
-                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                        'gradient-rose-white': 'linear-gradient(to bottom right, #E11D48, #FFFFFF)',
+                        'gradient-rose-dark': 'linear-gradient(to bottom right, #9F1239, #000000)',
                     },
                     fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
@@ -57,11 +57,11 @@
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
         <aside id="sidebar"
-            class="hidden md:flex flex-col w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-gray-700 transition-all duration-300 z-20">
+            class="hidden lg:flex flex-col w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-gray-700 transition-all duration-300 z-20">
             <div class="h-16 flex items-center justify-center border-b border-gray-200 dark:border-gray-700">
                 <a href="../index.html" class="flex items-center gap-2">
                     <div
-                        class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                        class="w-10 h-10 bg-gradient-to-br from-rose-600 to-rose-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
                         N</div>
                     <span class="font-bold text-2xl text-gray-900 dark:text-white">Nexus</span>
                 </a>
@@ -78,7 +78,7 @@
                         <i class="fas fa-box w-5"></i> My Services
                     </a>
                     <a href="invoices.html"
-                        class="flex items-center gap-3 px-4 py-3 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg transition">
+                        class="flex items-center gap-3 px-4 py-3 bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400 rounded-lg transition">
                         <i class="fas fa-file-invoice-dollar w-5"></i> Invoices
                     </a>
                     <a href="support.html"
@@ -111,7 +111,7 @@
                 class="h-16 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 sm:px-6 lg:px-8 z-10">
                 <div class="flex items-center gap-4">
                     <button id="sidebar-toggle"
-                        class="md:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
+                        class="lg:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                     <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Client Portal</h2>
@@ -171,14 +171,14 @@
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Oct 24, 2025</td>
                                     <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300"><i
-                                            class="fab fa-cc-visa text-lg mr-2 text-blue-800"></i> **** 4242</td>
+                                            class="fab fa-cc-visa text-lg mr-2 text-rose-800"></i> **** 4242</td>
                                     <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">$29.00</td>
                                     <td class="px-6 py-4 text-sm"><span
                                             class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Paid</span>
                                     </td>
                                     <td class="px-6 py-4 text-right">
                                         <button
-                                            class="download-invoice text-gray-500 hover:text-indigo-600 transition flex items-center justify-end gap-1 w-full text-sm">Download
+                                            class="download-invoice text-gray-500 hover:text-rose-600 transition flex items-center justify-end gap-1 w-full text-sm">Download
                                             <i class="fas fa-download"></i></button>
                                     </td>
                                 </tr>
@@ -188,14 +188,14 @@
                                     <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Email Marketing</td>
                                     <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Oct 24, 2025</td>
                                     <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300"><i
-                                            class="fab fa-cc-visa text-lg mr-2 text-blue-800"></i> **** 4242</td>
+                                            class="fab fa-cc-visa text-lg mr-2 text-rose-800"></i> **** 4242</td>
                                     <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">$15.00</td>
                                     <td class="px-6 py-4 text-sm"><span
                                             class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Paid</span>
                                     </td>
                                     <td class="px-6 py-4 text-right">
                                         <button
-                                            class="text-gray-500 hover:text-indigo-600 transition flex items-center justify-end gap-1 w-full text-sm">Download
+                                            class="text-gray-500 hover:text-rose-600 transition flex items-center justify-end gap-1 w-full text-sm">Download
                                             <i class="fas fa-download"></i></button>
                                     </td>
                                 </tr>
@@ -205,14 +205,14 @@
                                     <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Security Audit</td>
                                     <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Sep 10, 2025</td>
                                     <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300"><i
-                                            class="fab fa-paypal text-lg mr-2 text-blue-500"></i> PayPal</td>
+                                            class="fab fa-paypal text-lg mr-2 text-rose-500"></i> PayPal</td>
                                     <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">$99.00</td>
                                     <td class="px-6 py-4 text-sm"><span
                                             class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Paid</span>
                                     </td>
                                     <td class="px-6 py-4 text-right">
                                         <button
-                                            class="text-gray-500 hover:text-indigo-600 transition flex items-center justify-end gap-1 w-full text-sm">Download
+                                            class="text-gray-500 hover:text-rose-600 transition flex items-center justify-end gap-1 w-full text-sm">Download
                                             <i class="fas fa-download"></i></button>
                                     </td>
                                 </tr>
@@ -229,7 +229,7 @@
                                     </td>
                                     <td class="px-6 py-4 text-right">
                                         <button
-                                            class="pay-now-btn text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded text-xs font-bold transition">Pay
+                                            class="pay-now-btn text-white bg-rose-600 hover:bg-rose-800 px-3 py-1 rounded text-xs font-bold transition">Pay
                                             Now</button>
                                     </td>
                                 </tr>

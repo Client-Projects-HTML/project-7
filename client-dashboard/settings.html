@@ -27,11 +27,11 @@
                 extend: {
                     colors: {
                         primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
+                            50: '#FFF1F2',
+                            100: '#FFE4E6',
+                            500: '#E11D48',
+                            600: '#BE123C',
+                            700: '#9F1239',
                         },
                         dark: {
                             bg: '#020617',
@@ -40,8 +40,8 @@
                         }
                     },
                     backgroundImage: {
-                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
-                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                        'gradient-rose-white': 'linear-gradient(to bottom right, #E11D48, #FFFFFF)',
+                        'gradient-rose-dark': 'linear-gradient(to bottom right, #9F1239, #000000)',
                     },
                     fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
@@ -57,11 +57,11 @@
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
         <aside id="sidebar"
-            class="hidden md:flex flex-col w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-gray-700 transition-all duration-300 z-20">
+            class="hidden lg:flex flex-col w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-gray-700 transition-all duration-300 z-20">
             <div class="h-16 flex items-center justify-center border-b border-gray-200 dark:border-gray-700">
                 <a href="../index.html" class="flex items-center gap-2">
                     <div
-                        class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                        class="w-10 h-10 bg-gradient-to-br from-rose-600 to-rose-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
                         N</div>
                     <span class="font-bold text-2xl text-gray-900 dark:text-white">Nexus</span>
                 </a>
@@ -92,7 +92,7 @@
                         <i class="fas fa-user-circle w-5"></i> My Profile
                     </a>
                     <a href="settings.html"
-                        class="flex items-center gap-3 px-4 py-3 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg transition">
+                        class="flex items-center gap-3 px-4 py-3 bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400 rounded-lg transition">
                         <i class="fas fa-cog w-5"></i> Settings
                     </a>
                 </nav>
@@ -111,7 +111,7 @@
                 class="h-16 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-4 sm:px-6 lg:px-8 z-10">
                 <div class="flex items-center gap-4">
                     <button id="sidebar-toggle"
-                        class="md:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
+                        class="lg:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                     <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Client Portal</h2>
@@ -162,7 +162,7 @@
                                     <p class="text-sm text-gray-500">Switch between light and dark themes</p>
                                 </div>
                                 <button id="theme-switch"
-                                    class="w-12 h-6 rounded-full bg-gray-200 dark:bg-indigo-600 relative transition duration-300">
+                                    class="w-12 h-6 rounded-full bg-gray-200 dark:bg-rose-600 relative transition duration-300">
                                     <div
                                         class="absolute w-4 h-4 bg-white rounded-full top-1 left-1 dark:left-7 transition-all duration-300 shadow-sm">
                                     </div>
@@ -177,7 +177,7 @@
                                         layouts</p>
                                 </div>
                                 <button id="rtl-switch"
-                                    class="w-12 h-6 rounded-full bg-gray-200 dark:bg-indigo-600 relative transition duration-300">
+                                    class="w-12 h-6 rounded-full bg-gray-200 dark:bg-rose-600 relative transition duration-300">
                                     <div
                                         class="absolute w-4 h-4 bg-white rounded-full top-1 left-1 dark:left-7 transition-all duration-300 shadow-sm">
                                     </div>
@@ -196,7 +196,7 @@
                             <div class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                                 <div class="flex items-center gap-3">
                                     <div
-                                        class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center text-indigo-600">
+                                        class="w-10 h-10 bg-rose-100 dark:bg-rose-900/30 rounded-lg flex items-center justify-center text-rose-600">
                                         <i class="fas fa-envelope"></i>
                                     </div>
                                     <div>
@@ -208,7 +208,7 @@
                                 <label class="inline-flex items-center cursor-pointer">
                                     <input type="checkbox" checked class="sr-only peer">
                                     <div
-                                        class="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600">
+                                        class="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-rose-600">
                                     </div>
                                 </label>
                             </div>
@@ -216,7 +216,7 @@
                             <div class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                                 <div class="flex items-center gap-3">
                                     <div
-                                        class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-600">
+                                        class="w-10 h-10 bg-rose-100 dark:bg-rose-900/30 rounded-lg flex items-center justify-center text-rose-600">
                                         <i class="fas fa-bell"></i>
                                     </div>
                                     <div>
@@ -228,7 +228,7 @@
                                 <label class="inline-flex items-center cursor-pointer">
                                     <input type="checkbox" class="sr-only peer">
                                     <div
-                                        class="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600">
+                                        class="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-rose-600">
                                     </div>
                                 </label>
                             </div>

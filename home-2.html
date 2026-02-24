@@ -28,11 +28,11 @@
                 extend: {
                     colors: {
                         primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
+                            50: '#FFF1F2',
+                            100: '#FFE4E6',
+                            500: '#E11D48',
+                            600: '#BE123C',
+                            700: '#9F1239',
                         },
                         dark: {
                             bg: '#020617',
@@ -41,8 +41,8 @@
                         }
                     },
                     backgroundImage: {
-                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
-                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                        'gradient-rose-white': 'linear-gradient(to bottom right, #E11D48, #FFFFFF)',
+                        'gradient-rose-dark': 'linear-gradient(to bottom right, #9F1239, #000000)',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -61,14 +61,16 @@
 <body class="bg-white text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
 
     <!-- Header (Similar to Home 1 but tailored) -->
-    <header class="fixed w-full top-0 z-50 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-800 transition-all duration-300" id="navbar">
+    <header
+        class="fixed w-full top-0 z-50 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-gray-800 transition-all duration-300"
+        id="navbar">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="index.html" class="flex items-center gap-2">
                         <div
-                            class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                            class="w-10 h-10 bg-gradient-to-br from-rose-600 to-rose-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
                             N</div>
                         <span
                             class="font-display font-bold text-3xl tracking-tight text-gray-900 dark:text-white">Nexus</span>
@@ -76,11 +78,11 @@
                 </div>
 
                 <!-- Desktop Menu -->
-                <nav class="hidden md:flex gap-8">
+                <nav class="hidden lg:flex gap-8">
                     <!-- Home Dropdown -->
                     <div class="relative group" id="home-dropdown">
                         <button
-                            class="flex items-center gap-1 text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium focus:outline-none"
+                            class="flex items-center gap-1 text-rose-600 dark:text-rose-400 font-medium focus:outline-none"
                             id="home-menu-btn">
                             Home <i class="fas fa-chevron-up text-xs transition-transform duration-300"
                                 id="home-arrow"></i>
@@ -88,27 +90,27 @@
                         <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-dark-card rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 py-2 hidden"
                             id="home-menu">
                             <a href="index.html"
-                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition">Home
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-rose-50 dark:hover:bg-rose-900/20 hover:text-rose-600 transition">Home
                                 1</a>
                             <a href="home-2.html"
-                                class="block px-4 py-2 text-sm text-blue-600 bg-blue-50 dark:bg-blue-900/20 font-medium">Home
+                                class="block px-4 py-2 text-sm text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-900/20 font-medium">Home
                                 2</a>
                         </div>
                     </div>
                     <a href="about.html"
-                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">About</a>
+                        class="text-gray-600 hover:text-rose-600 dark:text-gray-300 dark:hover:text-rose-400 transition">About</a>
                     <a href="services.html"
-                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Services</a>
+                        class="text-gray-600 hover:text-rose-600 dark:text-gray-300 dark:hover:text-rose-400 transition">Services</a>
                     <a href="pricing.html"
-                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Pricing</a>
+                        class="text-gray-600 hover:text-rose-600 dark:text-gray-300 dark:hover:text-rose-400 transition">Pricing</a>
                     <a href="blog.html"
-                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Blog</a>
+                        class="text-gray-600 hover:text-rose-600 dark:text-gray-300 dark:hover:text-rose-400 transition">Blog</a>
                     <a href="contact.html"
-                        class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition">Contact</a>
+                        class="text-gray-600 hover:text-rose-600 dark:text-gray-300 dark:hover:text-rose-400 transition">Contact</a>
                 </nav>
 
                 <!-- Actions -->
-                <div class="hidden md:flex items-center gap-4">
+                <div class="hidden lg:flex items-center gap-4">
                     <button id="theme-toggle"
                         class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                         <i class="fas fa-moon dark:hidden text-gray-600"></i>
@@ -120,10 +122,10 @@
                     </button>
                     <div class="relative">
                         <div
-                            class="bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-center flex items-center overflow-hidden">
+                            class="bg-rose-600 hover:bg-rose-800 text-white rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-center flex items-center overflow-hidden">
                             <a href="login.html" class="px-4 py-2">Login</a>
                             <button id="login-menu-btn"
-                                class="px-3 py-2 border-l border-white/30 hover:bg-blue-800/30 focus:outline-none"
+                                class="px-3 py-2 border-l border-white/30 hover:bg-rose-800/30 focus:outline-none"
                                 aria-label="Toggle login options">
                                 <i class="fas fa-chevron-up text-xs transition-transform duration-300"
                                     id="login-arrow"></i>
@@ -132,15 +134,15 @@
                         <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-dark-card rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 py-2 hidden"
                             id="login-menu">
                             <a href="client-dashboard/index.html"
-                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition">Client</a>
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-rose-50 dark:hover:bg-rose-900/20 hover:text-rose-600 transition">Client</a>
                             <a href="dashboard/index.html"
-                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition">Admin</a>
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-rose-50 dark:hover:bg-rose-900/20 hover:text-rose-600 transition">Admin</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center gap-4">
+                <div class="lg:hidden flex items-center gap-4">
                     <button id="theme-toggle-mobile"
                         class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                         <i class="fas fa-moon dark:hidden text-gray-600"></i>
@@ -159,7 +161,7 @@
     </header>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 hidden md:hidden">
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 hidden lg:hidden">
         <div
             class="absolute right-0 top-0 h-full w-64 bg-white dark:bg-dark-card shadow-2xl p-6 transform transition-transform duration-300">
             <div class="flex justify-between items-center mb-8">
@@ -179,10 +181,10 @@
                     </button>
                     <div class="mt-4 pl-4 space-y-4 hidden" id="mobile-home-menu">
                         <a href="index.html"
-                            class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 transition pl-3">Home
+                            class="block text-gray-600 dark:text-gray-300 hover:text-rose-600 transition pl-3">Home
                             1</a>
                         <a href="home-2.html"
-                            class="block text-blue-600 font-medium border-l-2 border-blue-600 pl-3">Home 2</a>
+                            class="block text-rose-600 font-medium border-l-2 border-rose-600 pl-3">Home 2</a>
                     </div>
                 </div>
                 <a href="about.html" class="text-gray-600 dark:text-gray-300">About</a>
@@ -193,10 +195,10 @@
                 <hr class="border-gray-200 dark:border-gray-700 my-4">
                 <div>
                     <div
-                        class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all duration-300 shadow-md flex items-center overflow-hidden">
+                        class="w-full bg-rose-600 hover:bg-rose-800 text-white rounded-lg font-medium transition-all duration-300 shadow-md flex items-center overflow-hidden">
                         <a href="login.html" class="px-4 py-3 block flex-1">Login</a>
                         <button id="mobile-login-menu-btn"
-                            class="px-4 py-3 border-l border-white/30 hover:bg-blue-800/30 focus:outline-none"
+                            class="px-4 py-3 border-l border-white/30 hover:bg-rose-800/30 focus:outline-none"
                             aria-label="Toggle mobile login options">
                             <i class="fas fa-chevron-up text-xs transition-transform duration-300"
                                 id="mobile-login-arrow"></i>
@@ -204,9 +206,9 @@
                     </div>
                     <div class="mt-3 pl-4 space-y-3 hidden" id="mobile-login-menu">
                         <a href="client-dashboard/index.html"
-                            class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 transition pl-3">Client</a>
+                            class="block text-gray-600 dark:text-gray-300 hover:text-rose-600 transition pl-3">Client</a>
                         <a href="dashboard/index.html"
-                            class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 transition pl-3">Admin</a>
+                            class="block text-gray-600 dark:text-gray-300 hover:text-rose-600 transition pl-3">Admin</a>
                     </div>
                 </div>
             </nav>
@@ -218,20 +220,20 @@
         <!-- Background Elements -->
         <div class="absolute inset-0">
             <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-            <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-rose-500/20 rounded-full blur-3xl"></div>
             <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl"></div>
         </div>
 
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
                 <span
-                    class="inline-block py-1 px-3 rounded-full border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 text-sm font-semibold mb-6">
+                    class="inline-block py-1 px-3 rounded-full border border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-300 text-sm font-semibold mb-6">
                     ✨ Version 2.0 is live
                 </span>
                 <h1
                     class="text-5xl lg:text-7xl font-display font-bold text-gray-900 dark:text-white leading-tight mb-8">
                     The modern standard for <br /> <span
-                        class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">digital
+                        class="bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-purple-500 to-pink-500">digital
                         products</span>
                 </h1>
                 <p class="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
@@ -243,7 +245,7 @@
                 <div class="flex flex-wrap items-center justify-center gap-6 mb-12">
                     <div class="flex items-center gap-3">
                         <div
-                            class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                            class="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
                             <i class="fas fa-microchip"></i>
                         </div>
                         <div class="text-left leading-tight">
@@ -277,12 +279,12 @@
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
                     <a href="index.html"
-                        class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-xl shadow-indigo-500/30 transition transform hover:-translate-y-1">
+                        class="px-8 py-4 bg-rose-600 hover:bg-rose-800 text-white font-semibold rounded-lg shadow-xl shadow-rose-500/30 transition transform hover:-translate-y-1">
                         Try Demo Live
                     </a>
                     <a href="#" id="watch-video-btn"
                         class="px-8 py-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-white font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition flex items-center gap-2">
-                        <i class="fas fa-play text-indigo-500"></i> Watch Video
+                        <i class="fas fa-play text-rose-500"></i> Watch Video
                     </a>
                 </div>
 
@@ -310,7 +312,7 @@
                 <div class="mt-8 flex justify-center items-center gap-3">
                     <span class="text-gray-500 dark:text-gray-400 font-medium" id="monthly-label">Monthly</span>
                     <button id="pricing-toggle"
-                        class="w-14 h-8 rounded-full bg-indigo-600 p-1 transition flex items-center justify-start">
+                        class="w-14 h-8 rounded-full bg-rose-600 p-1 transition flex items-center justify-start">
                         <div class="w-6 h-6 rounded-full bg-white shadow-md transition-transform duration-300 transform"
                             id="toggle-dot"></div>
                     </button>
@@ -322,7 +324,7 @@
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Starter -->
                 <div
-                    class="p-8 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition relative">
+                    class="p-8 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-rose-300 dark:hover:border-rose-700 transition relative">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Starter</h3>
                     <p class="text-gray-500 text-sm mb-6">Perfect for small teams and startups.</p>
                     <div class="flex items-baseline mb-6">
@@ -330,7 +332,7 @@
                         <span class="text-gray-500 ml-2" id="starter-period">/month</span>
                     </div>
                     <a href="signup.html"
-                        class="block w-full py-2.5 text-center rounded-lg border border-gray-200 dark:border-gray-700 text-indigo-600 dark:text-indigo-400 font-medium hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition">Get
+                        class="block w-full py-2.5 text-center rounded-lg border border-gray-200 dark:border-gray-700 text-rose-600 dark:text-rose-400 font-medium hover:bg-rose-50 dark:hover:bg-rose-900/20 transition">Get
                         Started</a>
                     <ul class="mt-8 space-y-4">
                         <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300"><i
@@ -344,7 +346,7 @@
 
                 <!-- Pro -->
                 <div
-                    class="p-8 rounded-2xl bg-gray-900 dark:bg-indigo-900/20 border border-gray-900 dark:border-indigo-500 text-white relative transform md:-translate-y-4 shadow-xl">
+                    class="p-8 rounded-2xl bg-gray-900 dark:bg-rose-900/20 border border-gray-900 dark:border-rose-500 text-white relative transform md:-translate-y-4 shadow-xl">
                     <div
                         class="absolute top-0 right-0 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase">
                         Popular</div>
@@ -355,7 +357,7 @@
                         <span class="text-gray-400 ml-2" id="business-period">/month</span>
                     </div>
                     <a href="signup.html"
-                        class="block w-full py-2.5 text-center rounded-lg bg-indigo-500 hover:bg-indigo-600 text-white font-medium transition">Get
+                        class="block w-full py-2.5 text-center rounded-lg bg-rose-500 hover:bg-rose-600 text-white font-medium transition">Get
                         Started</a>
                     <ul class="mt-8 space-y-4">
                         <li class="flex items-center gap-3 text-gray-300"><i class="fas fa-check text-green-400"></i>
@@ -371,7 +373,7 @@
 
                 <!-- Enterprise -->
                 <div
-                    class="p-8 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition relative">
+                    class="p-8 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-rose-300 dark:hover:border-rose-700 transition relative">
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Enterprise</h3>
                     <p class="text-gray-500 text-sm mb-6">For large scale organizations.</p>
                     <div class="flex items-baseline mb-6">
@@ -379,7 +381,7 @@
                         <span class="text-gray-500 ml-2" id="enterprise-period">/month</span>
                     </div>
                     <a href="signup.html"
-                        class="block w-full py-2.5 text-center rounded-lg border border-gray-200 dark:border-gray-700 text-indigo-600 dark:text-indigo-400 font-medium hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition">Get
+                        class="block w-full py-2.5 text-center rounded-lg border border-gray-200 dark:border-gray-700 text-rose-600 dark:text-rose-400 font-medium hover:bg-rose-50 dark:hover:bg-rose-900/20 transition">Get
                         Started</a>
                     <ul class="mt-8 space-y-4">
                         <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300"><i
@@ -404,7 +406,7 @@
                 <div class="col-span-2 md:col-span-1 lg:col-span-1">
                     <a href="index.html" class="flex items-center gap-3 mb-6">
                         <div
-                            class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg border border-white/10">
+                            class="w-10 h-10 bg-gradient-to-br from-rose-600 to-rose-700 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg border border-white/10">
                             N</div>
                         <span class="font-display font-bold text-2xl text-gray-900 dark:text-white">Nexus</span>
                     </a>
@@ -412,13 +414,13 @@
                         Making business management easy, efficient, and effective for everyone.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                        <a href="#" class="text-gray-400 hover:text-rose-600 transition"><i
                                 class="fab fa-twitter text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                        <a href="#" class="text-gray-400 hover:text-rose-600 transition"><i
                                 class="fab fa-facebook text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                        <a href="#" class="text-gray-400 hover:text-rose-600 transition"><i
                                 class="fab fa-instagram text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i
+                        <a href="#" class="text-gray-400 hover:text-rose-600 transition"><i
                                 class="fab fa-linkedin text-xl"></i></a>
                     </div>
                 </div>
@@ -428,19 +430,19 @@
                     <h4 class="font-bold text-gray-900 dark:text-white mb-6">Services</h4>
                     <ul class="space-y-4">
                         <li><a href="service-details.html?type=web-development"
-                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Web
+                                class="text-gray-500 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition">Web
                                 Development</a>
                         </li>
                         <li><a href="service-details.html?type=mobile-apps"
-                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Mobile
+                                class="text-gray-500 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition">Mobile
                                 Apps</a>
                         </li>
                         <li><a href="service-details.html?type=ui-ux-design"
-                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">UI/UX
+                                class="text-gray-500 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition">UI/UX
                                 Design</a>
                         </li>
                         <li><a href="service-details.html?type=seo-optimization"
-                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">SEO
+                                class="text-gray-500 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition">SEO
                                 Optimization</a>
                         </li>
                     </ul>
@@ -450,19 +452,19 @@
                     <h4 class="font-bold text-gray-900 dark:text-white mb-6">Company</h4>
                     <ul class="space-y-4">
                         <li><a href="about.html"
-                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">About
+                                class="text-gray-500 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition">About
                                 Us</a></li>
                         <li><a href="coming-soon.html"
-                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Careers</a>
+                                class="text-gray-500 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition">Careers</a>
                         </li>
                         <li><a href="404.html"
-                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Events</a>
+                                class="text-gray-500 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition">Events</a>
                         </li>
                         <li><a href="blog.html"
-                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Blog</a>
+                                class="text-gray-500 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition">Blog</a>
                         </li>
                         <li><a href="contact.html"
-                                class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
+                                class="text-gray-500 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -475,9 +477,9 @@
                     </p>
                     <form class="flex flex-col gap-3">
                         <input type="email" placeholder="Enter your email" required
-                            class="px-4 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            class="px-4 py-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-rose-500">
                         <button type="submit"
-                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition font-medium">Subscribe</button>
+                            class="px-4 py-2 bg-rose-600 hover:bg-rose-800 text-white rounded-lg transition font-medium">Subscribe</button>
                     </form>
                 </div>
             </div>
@@ -486,7 +488,7 @@
                 class="border-t border-gray-200 dark:border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-gray-500 dark:text-gray-400 text-sm">
                     &copy; 2025 Nexus. All rights reserved. | Powered by <a href="https://www.abhivorn.com/"
-                        target="_blank" class="hover:text-blue-600 transition">Abhivorn Technologies Pvt.Ltd</a>
+                        target="_blank" class="hover:text-rose-600 transition">Abhivorn Technologies Pvt.Ltd</a>
                 </p>
                 <div class="flex gap-6 text-sm text-gray-500 dark:text-gray-400">
                     <a href="#" class="hover:text-gray-900 dark:hover:text-white transition">Privacy Policy</a>
@@ -498,7 +500,7 @@
 
     <!-- Video Modal -->
     <div id="video-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 hidden">
-        <button id="close-video" class="absolute top-6 right-6 text-white text-3xl hover:text-indigo-400 transition">
+        <button id="close-video" class="absolute top-6 right-6 text-white text-3xl hover:text-rose-400 transition">
             <i class="fas fa-times"></i>
         </button>
         <div class="w-full max-w-4xl px-4 aspect-video">
@@ -512,12 +514,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-

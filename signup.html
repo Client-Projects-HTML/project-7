@@ -27,11 +27,11 @@
                 extend: {
                     colors: {
                         primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
+                            50: '#FFF1F2',
+                            100: '#FFE4E6',
+                            500: '#E11D48',
+                            600: '#BE123C',
+                            700: '#9F1239',
                         },
                         dark: {
                             bg: '#020617',
@@ -40,8 +40,8 @@
                         }
                     },
                     backgroundImage: {
-                        'gradient-blue-white': 'linear-gradient(to bottom right, #2563eb, #ffffff)',
-                        'gradient-blue-dark': 'linear-gradient(to bottom right, #1e3a8a, #000000)',
+                        'gradient-rose-white': 'linear-gradient(to bottom right, #E11D48, #FFFFFF)',
+                        'gradient-rose-dark': 'linear-gradient(to bottom right, #9F1239, #000000)',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -61,7 +61,7 @@
         <!-- Background Decor -->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
             <div
-                class="absolute -top-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-blue-400/20 blur-3xl opacity-50 mix-blend-multiply filter animate-blob">
+                class="absolute -top-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-rose-400/20 blur-3xl opacity-50 mix-blend-multiply filter animate-blob">
             </div>
             <div
                 class="absolute -bottom-[30%] -left-[10%] w-[70%] h-[70%] rounded-full bg-purple-400/20 blur-3xl opacity-50 mix-blend-multiply filter animate-blob animation-delay-2000">
@@ -84,7 +84,7 @@
             <div class="text-center">
                 <a href="index.html" class="inline-flex items-center gap-2 mb-6">
                     <div
-                        class="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
+                        class="w-12 h-12 bg-gradient-to-br from-rose-600 to-rose-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg border border-white/20">
                         N</div>
                     <span class="font-display font-bold text-3xl text-gray-900 dark:text-white">Nexus</span>
                 </a>
@@ -104,7 +104,7 @@
                                 <i class="fas fa-user text-gray-400"></i>
                             </div>
                             <input id="name" name="name" type="text" required
-                                class="pl-10 block w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm transition duration-200"
+                                class="pl-10 block w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent sm:text-sm transition duration-200"
                                 placeholder="John Doe">
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                                 <i class="fas fa-envelope text-gray-400"></i>
                             </div>
                             <input id="email-address" name="email" type="email" autocomplete="email" required
-                                class="pl-10 block w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm transition duration-200"
+                                class="pl-10 block w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent sm:text-sm transition duration-200"
                                 placeholder="you@example.com">
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                                 <i class="fas fa-lock text-gray-400"></i>
                             </div>
                             <input id="password" name="password" type="password" autocomplete="new-password" required
-                                class="pl-10 block w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm transition duration-200"
+                                class="pl-10 block w-full px-3 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent sm:text-sm transition duration-200"
                                 placeholder="••••••••">
                         </div>
                         <p class="mt-1 text-xs text-gray-500">Must be at least 8 characters long.</p>
@@ -138,16 +138,16 @@
 
                 <div class="flex items-center">
                     <input id="terms" name="terms" type="checkbox" required
-                        class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        class="h-4 w-4 text-rose-600 focus:ring-rose-500 border-gray-300 rounded">
                     <label for="terms" class="ml-2 block text-sm text-gray-900 dark:text-gray-300">
-                        I agree to the <a href="#" class="text-blue-600 hover:text-blue-500">Terms</a> and <a href="#"
-                            class="text-blue-600 hover:text-blue-500">Privacy Policy</a>
+                        I agree to the <a href="#" class="text-rose-600 hover:text-rose-500">Terms</a> and <a href="#"
+                            class="text-rose-600 hover:text-rose-500">Privacy Policy</a>
                     </label>
                 </div>
 
                 <div>
                     <button type="submit"
-                        class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 shadow-lg shadow-blue-500/30">
+                        class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-lg text-white bg-rose-600 hover:bg-rose-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 transition duration-200 shadow-lg shadow-rose-500/30">
                         Create Account
                     </button>
                 </div>
@@ -175,7 +175,7 @@
 
             <p class="text-center text-sm text-gray-600 dark:text-gray-400">
                 Already have an account?
-                <a href="login.html" class="font-medium text-blue-600 hover:text-blue-500 transition">Sign in</a>
+                <a href="login.html" class="font-medium text-rose-600 hover:text-rose-500 transition">Sign in</a>
             </p>
         </div>
     </div>
@@ -183,4 +183,6 @@
 </body>
 
 </html>
+
+
 

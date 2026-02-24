@@ -198,16 +198,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const prevBtn = e.target.closest('.prev-page');
             const nextBtn = e.target.closest('.next-page');
             const statusSpan = document.querySelector('.text-sm.text-gray-500');
-            const activePage = paginationContainer.querySelector('.bg-blue-600');
+            const activePage = paginationContainer.querySelector('.bg-rose-600');
 
             if (pageLink) {
                 const pageNum = pageLink.innerText;
                 paginationContainer.querySelectorAll('.page-link').forEach(link => {
-                    link.classList.remove('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+                    link.classList.remove('bg-rose-600', 'text-white', 'hover:bg-rose-800');
                     link.classList.add('border', 'border-gray-200', 'dark:border-gray-700', 'text-gray-600', 'dark:text-gray-400', 'hover:bg-gray-50', 'dark:hover:bg-gray-800');
                 });
                 pageLink.classList.remove('border', 'border-gray-200', 'dark:border-gray-700', 'text-gray-600', 'dark:text-gray-400', 'hover:bg-gray-50', 'dark:hover:bg-gray-800');
-                pageLink.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+                pageLink.classList.add('bg-rose-600', 'text-white', 'hover:bg-rose-800');
                 if (statusSpan) statusSpan.innerText = `Showing page ${pageNum} results...`;
 
                 // Mock Data Swap for Users Page
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold">EW</div>
+                                        <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-rose-600 dark:text-blue-400 font-bold">EW</div>
                                         <div>
                                             <div class="font-medium text-gray-900 dark:text-white">Emma Watson</div>
                                             <div class="text-xs text-gray-500">Paris, France</div>
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <td class="px-6 py-4"><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Active</span></td>
                                 <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Nov 12, 2025</td>
                                 <td class="px-6 py-4 text-right">
-                                    <button class="edit-user text-gray-400 hover:text-blue-600 transition mx-1"><i class="fas fa-edit"></i></button>
+                                    <button class="edit-user text-gray-400 hover:text-rose-600 transition mx-1"><i class="fas fa-edit"></i></button>
                                     <button class="delete-user text-gray-400 hover:text-red-600 transition mx-1"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <td class="px-6 py-4"><span class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-full text-xs font-semibold">Banned</span></td>
                                 <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Dec 01, 2025</td>
                                 <td class="px-6 py-4 text-right">
-                                    <button class="edit-user text-gray-400 hover:text-blue-600 transition mx-1"><i class="fas fa-edit"></i></button>
+                                    <button class="edit-user text-gray-400 hover:text-rose-600 transition mx-1"><i class="fas fa-edit"></i></button>
                                     <button class="delete-user text-gray-400 hover:text-red-600 transition mx-1"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold">JD</div>
+                                        <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-rose-600 dark:text-blue-400 font-bold">JD</div>
                                         <div>
                                             <div class="font-medium text-gray-900 dark:text-white">John Doe</div>
                                             <div class="text-xs text-gray-500">New York, USA</div>
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <td class="px-6 py-4"><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Active</span></td>
                                 <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Oct 24, 2025</td>
                                 <td class="px-6 py-4 text-right">
-                                    <button class="edit-user text-gray-400 hover:text-blue-600 transition mx-1"><i class="fas fa-edit"></i></button>
+                                    <button class="edit-user text-gray-400 hover:text-rose-600 transition mx-1"><i class="fas fa-edit"></i></button>
                                     <button class="delete-user text-gray-400 hover:text-red-600 transition mx-1"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <td class="px-6 py-4"><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Active</span></td>
                                 <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Sep 15, 2025</td>
                                 <td class="px-6 py-4 text-right">
-                                    <button class="edit-user text-gray-400 hover:text-blue-600 transition mx-1"><i class="fas fa-edit"></i></button>
+                                    <button class="edit-user text-gray-400 hover:text-rose-600 transition mx-1"><i class="fas fa-edit"></i></button>
                                     <button class="delete-user text-gray-400 hover:text-red-600 transition mx-1"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">2 days ago</td>
                                 <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">$2,400.00</td>
                                 <td class="px-6 py-4 text-sm"><span class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-full text-xs font-semibold">Cancelled</span></td>
-                                <td class="px-6 py-4 text-right"><button class="view-order text-blue-600 hover:text-blue-800 text-sm font-medium">View</button></td>
+                                <td class="px-6 py-4 text-right"><button class="view-order text-rose-600 hover:text-blue-800 text-sm font-medium">View</button></td>
                             </tr>
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
                                 <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">#ORD-9978</td>
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">3 days ago</td>
                                 <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">$150.00</td>
                                 <td class="px-6 py-4 text-sm"><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Completed</span></td>
-                                <td class="px-6 py-4 text-right"><button class="view-order text-blue-600 hover:text-blue-800 text-sm font-medium">View</button></td>
+                                <td class="px-6 py-4 text-right"><button class="view-order text-rose-600 hover:text-blue-800 text-sm font-medium">View</button></td>
                             </tr>
                         `;
                     } else {
@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Today, 2:30 PM</td>
                                 <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">$1,200.00</td>
                                 <td class="px-6 py-4 text-sm"><span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-semibold">Completed</span></td>
-                                <td class="px-6 py-4 text-right"><button class="view-order text-blue-600 hover:text-blue-800 text-sm font-medium">View</button></td>
+                                <td class="px-6 py-4 text-right"><button class="view-order text-rose-600 hover:text-blue-800 text-sm font-medium">View</button></td>
                             </tr>
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
                                 <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">#ORD-9980</td>
@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">Yesterday</td>
                                 <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">$350.00</td>
                                 <td class="px-6 py-4 text-sm"><span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 rounded-full text-xs font-semibold">Pending</span></td>
-                                <td class="px-6 py-4 text-right"><button class="view-order text-blue-600 hover:text-blue-800 text-sm font-medium">View</button></td>
+                                <td class="px-6 py-4 text-right"><button class="view-order text-rose-600 hover:text-blue-800 text-sm font-medium">View</button></td>
                             </tr>
                         `;
                     }
@@ -391,11 +391,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update active button style
             filterGroup.querySelectorAll('.filter-btn').forEach(b => {
-                b.classList.remove('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+                b.classList.remove('bg-rose-600', 'text-white', 'hover:bg-rose-800');
                 b.classList.add('bg-white', 'dark:bg-dark-card', 'border', 'border-gray-200', 'dark:border-gray-700', 'text-gray-600', 'dark:text-gray-400', 'hover:bg-gray-50', 'dark:hover:bg-gray-800');
             });
             btn.classList.remove('bg-white', 'dark:bg-dark-card', 'border', 'border-gray-200', 'dark:border-gray-700', 'text-gray-600', 'dark:text-gray-400', 'hover:bg-gray-50', 'dark:hover:bg-gray-800');
-            btn.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+            btn.classList.add('bg-rose-600', 'text-white', 'hover:bg-rose-800');
 
             // Filter table rows
             const rows = document.querySelectorAll('tbody tr');
@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (chatAvatar) {
                     chatAvatar.innerText = initials;
                     const colors = ['bg-blue-100', 'bg-green-100', 'bg-purple-100'];
-                    const textColors = ['text-blue-600', 'text-green-600', 'text-purple-600'];
+                    const textColors = ['text-rose-600', 'text-green-600', 'text-purple-600'];
                     const randomIdx = Math.floor(Math.random() * colors.length);
                     chatAvatar.className = `w-10 h-10 rounded-full ${colors[randomIdx]} flex items-center justify-center ${textColors[randomIdx]} font-bold`;
                 }
@@ -481,14 +481,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (chatType === 'sarah') {
                         messagesHtml = `
                             <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xs">SS</div>
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-rose-600 text-xs">SS</div>
                                 <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg rounded-tl-none max-w-md">
                                     <p class="text-sm text-gray-800 dark:text-gray-200">Can I upgrade my plan mid-month?</p>
                                     <span class="text-xs text-gray-400 mt-1 block">9:15 AM</span>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3 justify-end">
-                                <div class="bg-blue-600 p-3 rounded-lg rounded-tr-none max-w-md text-white">
+                                <div class="bg-rose-600 p-3 rounded-lg rounded-tr-none max-w-md text-white">
                                     <p class="text-sm">Hi Sarah! Yes, you can upgrade at any time. The difference will be prorated.</p>
                                     <span class="text-xs text-blue-200 mt-1 block">9:20 AM</span>
                                 </div>
@@ -498,14 +498,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (chatType === 'michael') {
                         messagesHtml = `
                             <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xs">MJ</div>
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-rose-600 text-xs">MJ</div>
                                 <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg rounded-tl-none max-w-md">
                                     <p class="text-sm text-gray-800 dark:text-gray-200">Thanks for the quick refund.</p>
                                     <span class="text-xs text-gray-400 mt-1 block">Yesterday</span>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3 justify-end">
-                                <div class="bg-blue-600 p-3 rounded-lg rounded-tr-none max-w-md text-white">
+                                <div class="bg-rose-600 p-3 rounded-lg rounded-tr-none max-w-md text-white">
                                     <p class="text-sm">You're welcome, Michael! High priority for our loyal customers.</p>
                                     <span class="text-xs text-blue-200 mt-1 block">Yesterday</span>
                                 </div>
@@ -515,14 +515,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         messagesHtml = `
                             <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xs">JD</div>
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-rose-600 text-xs">JD</div>
                                 <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg rounded-tl-none max-w-md">
                                     <p class="text-sm text-gray-800 dark:text-gray-200">Hi, I'm trying to generate a new API key but getting a 403 error.</p>
                                     <span class="text-xs text-gray-400 mt-1 block">10:30 AM</span>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3 justify-end">
-                                <div class="bg-blue-600 p-3 rounded-lg rounded-tr-none max-w-md text-white">
+                                <div class="bg-rose-600 p-3 rounded-lg rounded-tr-none max-w-md text-white">
                                     <p class="text-sm">Hello John! Let me check your account permissions. One moment please.</p>
                                     <span class="text-xs text-blue-200 mt-1 block">10:32 AM</span>
                                 </div>
@@ -800,3 +800,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
